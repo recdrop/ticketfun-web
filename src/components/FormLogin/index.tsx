@@ -23,9 +23,13 @@ const FormLogin = () => {
       toast.success('Login efetuado com sucesso!');
       router.push('/Resume');
     } catch (err) {
-      toast.error('Erro ao efetuar o Login!');
-      setError(err.message);
       setIsLoading(false)
+      if (err instanceof Error) {
+        toast.error('Erro ao efetuar o Login!');
+        setError(err.message);
+      } else {
+        setError('Erro desconhecido');
+    }
     }
   };
 
@@ -41,10 +45,14 @@ const FormLogin = () => {
       toast.success('Login efetuado com sucesso!');
       router.push('/Resume');
    
-    } catch (err) {
-      toast.error('Erro ao efetuar o Login!');
-      setError(err.message);
+    } catch (err ) {
        setIsLoading(false)
+       if (err instanceof Error) {
+          toast.error('Erro ao efetuar o Login!');
+          setError(err.message);
+        } else {
+          setError('Erro desconhecido');
+        }
     }
   };
 
