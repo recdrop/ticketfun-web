@@ -22,7 +22,7 @@ const FormLogin = () => {
       setIsLoading(false)
       toast.success('Login efetuado com sucesso!');
       router.push('/Resume');
-    } catch (err) {
+    } catch (err : Error | any) {
       toast.error('Erro ao efetuar o Login!');
       setError(err.message);
       setIsLoading(false)
@@ -41,7 +41,7 @@ const FormLogin = () => {
       toast.success('Login efetuado com sucesso!');
       router.push('/Resume');
    
-    } catch (err) {
+    } catch (err: Error | any) {
       toast.error('Erro ao efetuar o Login!');
       setError(err.message);
        setIsLoading(false)
