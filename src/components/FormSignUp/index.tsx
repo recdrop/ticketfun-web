@@ -36,21 +36,21 @@ export default function FormSignUp() {
   };
  return (
     <div className="
-        w-full 
-        sm:w-auto 
-        h-3/6 
-        
-        flex 
-        items-center 
-        justify-center 
-        bg-white 
-        border 
-        rounded-md 
-        shadow-md 
-        py-12 
-        px-10 
-        sm:px-6 
-        lg:px-10">
+      w-full 
+      max-w-screen-lg 
+      h-3/6 
+      
+      flex 
+      items-center 
+      justify-center 
+      bg-white 
+      border 
+      rounded-md 
+      shadow-md 
+      py-12 
+      px-10 
+      sm:px-6 
+      lg:px-10">
       <div className="max-w-md  w-full space-y-8">
          <div className='flex items-center justify-center'>
            <Image 
