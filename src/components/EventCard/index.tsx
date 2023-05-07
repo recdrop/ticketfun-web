@@ -51,6 +51,8 @@ const EventCard: React.FC<EventCardProps> = ({
                   text-white
                   bg-purple-700 
                   hover:bg-purple-800
+                  hover:text-white
+                  text-xl
                   "
                   >
                     Buy Tickets
