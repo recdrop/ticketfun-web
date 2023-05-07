@@ -204,6 +204,34 @@ const FormLogin = () => {
               </Link>
             </div>
           </div>
+                  <div className='flex flex-row'>
+            <div className='flex flex-1'>
+              <Link href="/" className='  
+              group 
+              relative 
+              w-full 
+              h-14
+              flex 
+              justify-center 
+              items-center
+       
+              border 
+              border-purple-700
+              text-lg
+              font-medium 
+              rounded-md 
+              text-purple-700
+              bg-white
+              hover:bg-purple-700 hover:text-white 
+              focus:outline-none 
+              focus:ring-2 
+              focus:ring-offset-2 
+              focus:ring-purple-700"'>
+                Voltar
+              </Link>
+            </div>
+
+          </div>
  
 </form>
  <TextOverline texto="ou acesse com " />
