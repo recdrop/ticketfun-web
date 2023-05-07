@@ -34,7 +34,7 @@ const EventCard: React.FC<EventCardProps> = ({
       </div>
       <div className='p-4'>
           <h3 className="text-date-card">{eventDate}</h3>
-          <h2 className="text-title-card">{eventName}</h2>
+          <h1 className="text-title-card">{eventName}</h1>
           {/* <p className="description ">{eventDescription}</p> */}
           <p className="place-card">{eventLocation}</p>
           <div className='flex flex-row mt-6'>
