@@ -18,7 +18,7 @@ const Header: React.FC = () => {
             </Link>
           </div>
           {/* Campo de pesquisa */}
-           <div className="w-96 relative">
+           <div className="max-w-96 relative">
             <span className="absolute left-3 top-1/2 transform -translate-y-1/2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
