@@ -1,3 +1,81 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;700&display=swap');
+html,
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  
+  font-size: 0.875rem; /* 14px */
+  font-weight: 400;
+}
+
+h1 {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 2.125rem; /* 34px */
+    color: #242423;
+}
+
+h2 {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  font-size: 1.375rem; /* 22px */
+    color: #242423;
+}
+
+h3 {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem; /* 18px */
+    color: #242423;
+}
+
+.description {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem; /* 12px */
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 700;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-light {
+  font-weight: 300;
+}
+.font-regular {
+  font-weight: 400;
+}
+ @layer utilities {
+   .text-date-card {
+      font-family: 'Helvetica Neue';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 20px;
+      color: #731DD8;
+   }
+
+   .place-card{
+      font-family: 'Helvetica Neue';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;    
+        color: #8D8D8D;
+   }
+
+  
+
+  }
+
