@@ -77,9 +77,9 @@ const FormLogin = () => {
       rounded-md 
       shadow-md 
       py-12 
-      px-10 
+      px-6
       sm:px-6 
-      lg:px-10">
+      lg:px-6">
     <div className="max-w-md w-full space-y-8">
       <div className='flex items-center justify-center'>
         <Image 
