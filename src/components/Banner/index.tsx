@@ -10,9 +10,11 @@ SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const Banner: React.FC = () => {
   const images = [
+    './assets/imgs/Banner.png',
+    './assets/imgs/Banner.png',
     'https://via.placeholder.com/1920x1080/FF6347/FFFFFF?text=Banner+1',
     'https://via.placeholder.com/1920x1080/008080/FFFFFF?text=Banner+2',
-    'https://via.placeholder.com/1920x1080/FFD700/FFFFFF?text=Banner+3',
+    'https://via.placeholder.com/1920x1080/FFD700/FFFFFF?text=Banner+3'
   ];
 
 

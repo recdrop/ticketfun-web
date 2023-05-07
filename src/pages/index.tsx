@@ -10,21 +10,21 @@ const HomePage: React.FC = () => {
   // Lista de eventos de exemplo
   const events = [
     {
-      image: 'https://via.placeholder.com/300x200',
+      image: './assets/imgs/imgCard.png',
       name: 'Blackartel Festival',
       description: 'Descrição do Evento 1',
       location: 'Centro de Convenções - Salvador, BA',
       date:'Friday, 04/07/2023 10:00 PM'
     },
     {
-          image: 'https://via.placeholder.com/300x200',
+       image: './assets/imgs/imgCard.png',
       name: 'Blackartel Festival',
       description: 'Descrição do Evento 2',
       location: 'Centro de Convenções - Salvador, BA',
       date:'Friday, 04/07/2023 10:00 PM'
     },
     {
-      image: 'https://via.placeholder.com/300x200',
+     image: './assets/imgs/imgCard.png',
       name: 'Blackartel Festival',
       description: 'Descrição do Evento 3',
       location: 'Centro de Convenções - Salvador, BA',
