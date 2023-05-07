@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { User, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../../firebase'
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 const Profile = (): JSX.Element => {
   const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
@@ -20,7 +21,8 @@ const Profile = (): JSX.Element => {
   const handleLogout = async () => {
     try {
       await auth.signOut();
-      router.push("/")
+   
+      //router.push("/")
     } catch (error) {
       console.error('Erro ao realizar logout:', error);
     }
