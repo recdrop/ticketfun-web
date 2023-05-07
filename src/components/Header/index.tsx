@@ -50,7 +50,7 @@ const Header: React.FC = () => {
           </Link>
           {/* Botão de login */}
           <Link href="/Login"  className="px-4 py-2 bg-purple-700 text-white rounded transition-colors duration-300 hover:bg-purple-800">
-              Login
+              Log in
           </Link>
         </div>
         <div className="-mr-2 flex md:hidden">
