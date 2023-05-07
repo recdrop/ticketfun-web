@@ -3,6 +3,7 @@ import EventCard from '@/src/components/EventCard';
 import Header from '@/src/components/Header';
 import React from 'react';
 import ButtonGroup from '../components/ButtonGroup';
+import Footer from '../components/Footer';
 
 
 const HomePage: React.FC = () => {
@@ -35,9 +36,9 @@ const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       <Header />
-      <main className="container mx-auto px-4 py-8">
         <Banner />
         <ButtonGroup />
+      <main className="container mx-auto px-4 pt-8 pb-48">
         <h2 className="text-2xl font-bold my-8 text-center">Próximos eventos</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {events.map((event, index) => (
@@ -65,6 +66,7 @@ const HomePage: React.FC = () => {
           ))}
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

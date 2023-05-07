@@ -18,7 +18,7 @@ const Header: React.FC = () => {
             </Link>
           </div>
           {/* Campo de pesquisa */}
-           <div className="w-64 relative">
+           <div className="w-96 relative">
             <span className="absolute left-3 top-1/2 transform -translate-y-1/2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +35,7 @@ const Header: React.FC = () => {
             </span>
             <input
               type="text"
-              placeholder="Buscar..."
+              placeholder="Pesquisar eventos, shows, cursos..."
               className="w-full pl-10 pr-3 py-2 bg-white text-black rounded"
             />
           </div>

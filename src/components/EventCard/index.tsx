@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import React from 'react';
 import MyAvatarGroup from '../MyAvatarGroup';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 interface EventCardProps {
 
@@ -28,10 +30,25 @@ const EventCard: React.FC<EventCardProps> = ({
    
   ];
   return (
-    <div className="bg-white shadow-lg rounded-lg  transform transition-transform duration-300 hover:scale-105">
-      <div className='w-full'>
-         <img src={image} alt={eventName} className="w-full h-48 object-cover mb-4 rounded-t-md" />
+    <div className="bg-white shadow-lg rounded-lg  transform transition-transform duration-300 hover:scale-105 relative">
+     <div className="relative w-full">
+      <img src={image} alt={eventName} className="w-full h-48 object-cover mb-4 rounded-t-md" />
+      <div className="absolute top-0 right-0 p-4">
+        <div className="bg-red-600 text-white p-2 rounded-md">
+          <p className="font-bold text-2xl">16</p>
+
+        </div>
       </div>
+      <div className="absolute bottom-0 right-0 p-4 flex justify-center items-center">
+        <div className="flex items-center bg-purple-700 text-white h-10 w-10 pl-3 rounded-md">
+          <FontAwesomeIcon
+            icon={faHeart}
+            className='text-white text-lg cursor-pointer'
+          />
+        </div>
+      </div>
+    </div>
+
       <div className='p-4'>
           <h3 className="text-date-card">{eventDate}</h3>
           <h1 className="text-title-card">{eventName}</h1>

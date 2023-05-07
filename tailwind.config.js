@@ -16,6 +16,7 @@ module.exports = {
       },
       colors: {
         'gray-icons': '#6B6B68',
+        'black-footer':'#242423',
       },
       fontFamily: {
         helvetica: ['Helvetica Neue', 'sans-serif'],
