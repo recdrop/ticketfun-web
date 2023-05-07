@@ -14,7 +14,7 @@ const withAuth = (Component: React.ComponentType) => {
         if (user) {
           setIsAuthenticated(true);
         } else {
-          router.push('/login');
+          router.push('/Login');
         }
         setIsLoading(false);
       });
