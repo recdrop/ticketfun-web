@@ -4,6 +4,8 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../../firebase'; 
 import Image from 'next/image';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 export default function FormSignUp() {
 
@@ -13,6 +15,7 @@ export default function FormSignUp() {
   const [error, setError] = useState<string>('');
     const [isLoading, setLoading] = useState<boolean>(false);
     const router = useRouter();
+    const [showPassword, setShowPassword] = useState(false);
 
   const signUpWithEmailAndPassword = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -129,39 +132,46 @@ export default function FormSignUp() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div>
-              <label htmlFor="password" className="sr-only">
-                Senha
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-              className="
-                  appearance-none 
-                  rounded-md 
-                   h-16  
-                  relative 
-                  block 
-                  w-full 
-                  px-3 
-                  py-2 
-                  border 
-                  border-gray-200 
-                  placeholder-gray-500 
-                  text-gray-900 
-                  focus:outline-none 
-                  focus:ring-purple-500 
-                  focus:border-purple-500 
-                  focus:z-10 
-                 "
-                placeholder="Senha"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+           <div className="relative">
+  <input
+    id="password"
+    name="password"
+    type={showPassword ? 'text' : 'password'}
+    autoComplete="current-password"
+    required
+    className="
+      appearance-none 
+      rounded-md 
+      h-16  
+      relative 
+      block 
+      w-full 
+      px-3 
+      py-2 
+      pr-10 
+      border 
+      border-gray-200 
+      placeholder-gray-500 
+      text-gray-900 
+      focus:outline-none 
+      focus:ring-purple-500 
+      focus:border-purple-500 
+      focus:z-10 
+    "
+    placeholder="Senha"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+  />
+  <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+    <FontAwesomeIcon
+      icon={showPassword ? faEyeSlash : faEye}
+      className="h-5 text-purple-700 cursor-pointer"
+      onClick={() => setShowPassword(!showPassword)}
+    />
+  </div>
+  <div>
+</div>
+  </div> {/*fim da div */}
           </div>
 
           {error && <p className="text-red-600 text-sm mt-4">{error}</p>}
