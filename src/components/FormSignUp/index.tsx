@@ -1,44 +1,48 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { auth } from '../../../firebase'; 
-import Image from 'next/image';
-import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../../../firebase";
+import Image from "next/image";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 export default function FormSignUp() {
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
 
-    const [name, setName] = useState<string>('');
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
-  const [error, setError] = useState<string>('');
-    const [isLoading, setLoading] = useState<boolean>(false);
-    const router = useRouter();
-    const [showPassword, setShowPassword] = useState(false);
-
-  const signUpWithEmailAndPassword = async (event: React.FormEvent<HTMLFormElement>) => {
+  const signUpWithEmailAndPassword = async (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
     setLoading(true);
 
-
-
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
 
       await updateProfile(user, { displayName: name });
 
       // Redireciona o usuário para a página inicial após o cadastro bem-sucedido
-      router.push('/Resume');
-    } catch (err : Error | any)  {
-      console.error('Erro ao criar uma conta:', error);
+      router.push("/Resume");
+    } catch (err: Error | any) {
+      console.error("Erro ao criar uma conta:", error);
     } finally {
       setLoading(false);
     }
   };
- return (
-    <div className="
+  return (
+    <div
+      className="
       w-full 
       max-w-screen-lg 
       h-3/6 
@@ -53,18 +57,21 @@ export default function FormSignUp() {
       py-12 
       px-10 
       sm:px-6 
-      lg:px-10">
+      lg:px-10"
+    >
       <div className="max-w-md  w-full space-y-8">
-         <div className='flex items-center justify-center'>
-           <Image 
-              src="/assets/imgs/logo.svg" alt="Logo"
-              width={350}
-              height={350}
-            
-           />
+        <div className="flex items-center justify-center">
+          <Image
+            src="/assets/imgs/logo.svg"
+            alt="Logo"
+            width={350}
+            height={350}
+          />
         </div>
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Crie a sua conta</h2>
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            Crie a sua conta
+          </h2>
         </div>
         <form className="mt-8 space-y-6" onSubmit={signUpWithEmailAndPassword}>
           <input type="hidden" name="remember" defaultValue="true" />
@@ -132,14 +139,14 @@ export default function FormSignUp() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-           <div className="relative">
-  <input
-    id="password"
-    name="password"
-    type={showPassword ? 'text' : 'password'}
-    autoComplete="current-password"
-    required
-    className="
+            <div className="relative">
+              <input
+                id="password"
+                name="password"
+                type={showPassword ? "text" : "password"}
+                autoComplete="current-password"
+                required
+                className="
       appearance-none 
       rounded-md 
       h-16  
@@ -158,27 +165,27 @@ export default function FormSignUp() {
       focus:border-purple-500 
       focus:z-10 
     "
-    placeholder="Senha"
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-  />
-  <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-    <FontAwesomeIcon
-      icon={showPassword ? faEyeSlash : faEye}
-      className="h-5 text-purple-700 cursor-pointer"
-      onClick={() => setShowPassword(!showPassword)}
-    />
-  </div>
-  <div>
-</div>
-  </div> {/*fim da div */}
+                placeholder="Senha"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                <FontAwesomeIcon
+                  icon={showPassword ? faEyeSlash : faEye}
+                  className="h-5 text-purple-700 cursor-pointer"
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+              </div>
+              <div></div>
+            </div>{" "}
+            {/*fim da div */}
           </div>
 
           {error && <p className="text-red-600 text-sm mt-4">{error}</p>}
 
           <div>
             <button
-             disabled={isLoading}
+              disabled={isLoading}
               type="submit"
               className="
               group 
@@ -205,9 +212,11 @@ export default function FormSignUp() {
               Entrar
             </button>
           </div>
-          <div className='flex flex-row'>
-            <div className='flex flex-1'>
-              <Link href="/Login" className='  
+          <div className="flex flex-row">
+            <div className="flex flex-1">
+              <Link
+                href="/Login"
+                className='  
               group 
               relative 
               w-full 
@@ -227,16 +236,14 @@ export default function FormSignUp() {
               focus:outline-none 
               focus:ring-2 
               focus:ring-offset-2 
-              focus:ring-purple-700"'>
+              focus:ring-purple-700"'
+              >
                 Voltar
               </Link>
             </div>
-
           </div>
- 
-</form>
-
-</div>
-</div>
-);
+        </form>
+      </div>
+    </div>
+  );
 }

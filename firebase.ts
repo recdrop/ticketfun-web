@@ -1,6 +1,6 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth } from 'firebase/auth';
+import { getAuth } from "firebase/auth";
 // Importe outros serviços do Firebase conforme necessário, como getFirestore, getStorage, etc.
 
 const firebaseConfig = {
@@ -10,7 +10,7 @@ const firebaseConfig = {
   storageBucket: "ticketfun-b951f.appspot.com",
   messagingSenderId: "417239498198",
   appId: "1:417239498198:web:2a937bf24283d0aec23877",
-  measurementId: "G-JLPGSXDRNX"
+  measurementId: "G-JLPGSXDRNX",
 };
 
 const app = initializeApp(firebaseConfig);

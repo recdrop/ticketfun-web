@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function Producer() {
-  return (
-    <div>Produtor</div>
-  )
+  return <div>Produtor</div>;
 }

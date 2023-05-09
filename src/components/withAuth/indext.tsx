@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../../../firebase';
-import { toast } from 'react-toastify';
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../../firebase";
+import { toast } from "react-toastify";
 
 const withAuth = (Component: React.ComponentType) => {
   const AuthenticatedComponent: React.FC = (props) => {
@@ -15,9 +15,8 @@ const withAuth = (Component: React.ComponentType) => {
         if (user) {
           setIsAuthenticated(true);
         } else {
-         
-          router.push('/');
-          toast.success('Você não está mais autenticado!');
+          router.push("/");
+          toast.success("Você não está mais autenticado!");
         }
         setIsLoading(false);
       });
@@ -32,7 +31,7 @@ const withAuth = (Component: React.ComponentType) => {
     }
 
     if (!isAuthenticated) {
-      router.push("/")
+      router.push("/");
       return null;
     }
 

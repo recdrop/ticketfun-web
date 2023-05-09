@@ -1,36 +1,35 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { useState, FormEvent } from 'react';
-import { auth } from '../../../firebase'; // Atualize o caminho conforme necessário
-import { useRouter } from 'next/router';
-import { sendPasswordResetEmail } from 'firebase/auth';
-import { toast } from 'react-toastify';
+import Link from "next/link";
+import Image from "next/image";
+import { useState, FormEvent } from "react";
+import { auth } from "../../../firebase"; // Atualize o caminho conforme necessário
+import { useRouter } from "next/router";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { toast } from "react-toastify";
 
 const FormForgotPassword = () => {
   const router = useRouter();
-  
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
+
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
 
- const handleResetPassword = async (e: FormEvent<HTMLFormElement>) => {
+  const handleResetPassword = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError('');
+    setError("");
     try {
       await sendPasswordResetEmail(auth, email);
       setIsSuccess(true);
-      toast.success("E-mail de reset enviado com sucesso!")
+      toast.success("E-mail de reset enviado com sucesso!");
       setEmail("");
-    } catch (err : Error | any) {
+    } catch (err: Error | any) {
       setError(err.message);
-      toast.error("O correu um erro ao resetar a senha!"+err.message)
+      toast.error("O correu um erro ao resetar a senha!" + err.message);
     }
   };
 
-
-
   return (
-     <div className="
+    <div
+      className="
       w-full 
       max-w-screen-lg 
       h-3/6 
@@ -45,19 +44,20 @@ const FormForgotPassword = () => {
       py-12 
       px-10 
       sm:px-6 
-      lg:px-10">
-   
+      lg:px-10"
+    >
       <div className="max-w-md  w-full space-y-8">
-         <div className='flex items-center justify-center'>
-           <Image 
-              src="/assets/imgs/logo.svg" alt="Logo"
-              width={350}
-              height={350}
-            
-           />
+        <div className="flex items-center justify-center">
+          <Image
+            src="/assets/imgs/logo.svg"
+            alt="Logo"
+            width={350}
+            height={350}
+          />
         </div>
         <div>
-          <h2 className="
+          <h2
+            className="
             mt-6 
             text-center 
             text-3xl 
@@ -102,7 +102,6 @@ const FormForgotPassword = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-         
           </div>
 
           {error && <p className="text-red-600 text-sm mt-4">{error}</p>}
@@ -135,9 +134,11 @@ const FormForgotPassword = () => {
               Enviar
             </button>
           </div>
-           <div className='flex flex-row'>
-            <div className='flex flex-1'>
-              <Link href="/Login" className='  
+          <div className="flex flex-row">
+            <div className="flex flex-1">
+              <Link
+                href="/Login"
+                className='  
               group 
               relative 
               w-full 
@@ -157,17 +158,16 @@ const FormForgotPassword = () => {
               focus:outline-none 
               focus:ring-2 
               focus:ring-offset-2 
-              focus:ring-purple-700"'>
+              focus:ring-purple-700"'
+              >
                 Voltar
               </Link>
             </div>
-
           </div>
-
         </form>
       </div>
-</div>
-);
+    </div>
+  );
 };
 
 export default FormForgotPassword;

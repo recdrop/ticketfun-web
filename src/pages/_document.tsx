@@ -1,13 +1,11 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-
-
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
         <Head>
-           <link
+          <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;700&display=swap"
           />
