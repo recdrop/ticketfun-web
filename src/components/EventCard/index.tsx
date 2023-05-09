@@ -1,11 +1,13 @@
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import React from "react";
 import MyAvatarGroup from "../MyAvatarGroup";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { slugify } from "@/src/utils/slugify";
 
 interface EventCardProps {
   image: string;
+  eventId: number;
   eventDate: string;
   eventName: string;
   eventDescription: string;
@@ -14,6 +16,7 @@ interface EventCardProps {
 
 const EventCard: React.FC<EventCardProps> = ({
   image,
+  eventId,
   eventDate,
   eventName,
   eventDescription,
@@ -27,6 +30,9 @@ const EventCard: React.FC<EventCardProps> = ({
     { id: 5, name: "Alice Doe", imageSrc: "https://bit.ly/dan-abramov" },
     { id: 5, name: "Alice Doe", imageSrc: "https://bit.ly/dan-abramov" },
   ];
+
+  const eventUrl = slugify(`${eventId}-${eventName}`);
+
   return (
     <div className="bg-white shadow-lg rounded-lg  transform transition-transform duration-300 hover:scale-105 relative">
       <div className="relative w-full">
@@ -58,7 +64,7 @@ const EventCard: React.FC<EventCardProps> = ({
         <div className="flex flex-row mt-6">
           <div className="flex flex-1">
             <Link
-              href="#"
+              href={`/Events/${eventUrl}`}
               className="
                   border 
                   border-black 
