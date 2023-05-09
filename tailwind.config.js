@@ -17,6 +17,15 @@ module.exports = {
       colors: {
         "gray-icons": "#6B6B68",
         "black-footer": "#242423",
+        "purple-tf": {
+          900: "#731DD8",
+        },
+        "red-tf": {
+          900: "#EF2517",
+        },
+        "red-tf": {
+          900: "#EF2517",
+        },
       },
       fontFamily: {
         helvetica: ["Helvetica Neue", "sans-serif"],
