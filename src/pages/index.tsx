@@ -9,6 +9,7 @@ const HomePage: React.FC = () => {
   // Lista de eventos de exemplo
   const events = [
     {
+      id: 1,
       image: "./assets/imgs/imgCard.png",
       name: "Blackartel Festival",
       description: "Descrição do Evento 1",
@@ -16,6 +17,7 @@ const HomePage: React.FC = () => {
       date: "Friday, 04/07/2023 10:00 PM",
     },
     {
+      id: 2,
       image: "./assets/imgs/imgCard.png",
       name: "Blackartel Festival",
       description: "Descrição do Evento 2",
@@ -23,6 +25,7 @@ const HomePage: React.FC = () => {
       date: "Friday, 04/07/2023 10:00 PM",
     },
     {
+      id: 3,
       image: "./assets/imgs/imgCard.png",
       name: "Blackartel Festival",
       description: "Descrição do Evento 3",
@@ -46,6 +49,7 @@ const HomePage: React.FC = () => {
             <EventCard
               key={index}
               image={event.image}
+              eventId={event.id}
               eventName={event.name}
               eventDescription={event.description}
               eventLocation={event.location}
@@ -61,6 +65,7 @@ const HomePage: React.FC = () => {
             <EventCard
               key={index}
               image={event.image}
+              eventId={event.id}
               eventName={event.name}
               eventDescription={event.description}
               eventLocation={event.location}
