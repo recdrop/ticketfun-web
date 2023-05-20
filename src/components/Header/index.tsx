@@ -20,7 +20,11 @@ const Header: React.FC = () => {
           {/* Campo de pesquisa */}
           <div className="max-w-96 relative hidden lg:flex">
             <span className="absolute left-3 top-1/2 transform -translate-y-1/2">
-              <img className="h-5 w-5 text-gray-400" src="/assets/svg/search.svg" alt="Search" />
+              <img
+                className="h-5 w-5 text-gray-400"
+                src="/assets/svg/search.svg"
+                alt="Search"
+              />
             </span>
             <input
               type="text"
@@ -33,20 +37,22 @@ const Header: React.FC = () => {
         <div className="hidden md:flex items-center">
           <Link
             href="/produtor"
-            className="mr-4 text-lg text-gray-tf-400 hover:text-gray-400"
+            className="mr-4 text-lg text-gray-tf-400 hover:text-gray-400 flex"
           >
-            Seja um produtor >
+            Seja um produtor{" "}
+            <img className="ml-3" src="/assets/svg/arrow.svg" alt="Arrow" />
           </Link>
           <Link
             href="/get-started"
-            className="mr-4 text-lg text-gray-tf-400 hover:text-gray-400"
+            className="mr-4 text-lg text-gray-tf-400 hover:text-gray-400 flex"
           >
-            Get Started
+            Get Started{" "}
+            <img className="ml-3" src="/assets/svg/arrow.svg" alt="Arrow" />
           </Link>
           {/* Botão de login */}
           <Link
             href="/Login"
-            className="px-4 py-2 bg-purple-700 text-white rounded transition-colors duration-300 hover:bg-purple-800"
+            className="bg-purple-tf-900 hover:bg-purple-900 p-5 border-radius-tf box-border border-transparent-tf active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 not-italic font-bold text-xl text-center text-white"
           >
             Log in
           </Link>
@@ -54,7 +60,7 @@ const Header: React.FC = () => {
         <div className="-mr-2 flex md:hidden">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="inline-flex items-center justify-center p-2 rounded-md text-white bg-purple-700 hover:text-white hover:bg-purple-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            className="inline-flex items-center justify-center p-2 rounded-md text-white bg-purple-tf-900 hover:text-white hover:bg-purple-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
             aria-expanded="false"
           >
             <span className="sr-only">Abrir menu principal</span>
