@@ -1,11 +1,46 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import {auth} from '../../../firebase'
+import {  onAuthStateChanged, User } from "firebase/auth";
+import { useRouter } from "next/router";
 
 const Header: React.FC = () => {
+  const [user, setUser] = useState<User | null>(null);
+  const [userPhotoUrl, setUserPhotoUrl] = useState<string | null>(null);
+  const [userInitials, setUserInitials] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+      if (user) {
+        setUserPhotoUrl(user.photoURL);
+        setUserInitials(getUserInitials(user.displayName));
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+
+      router.push("/")
+    } catch (error) {
+      console.error("Erro ao realizar logout:", error);
+    }
+  };
+
+  function getUserInitials(name: string | null): string | null {
+    if (!name) return null;
+    const initials = name.match(/\b\w/g) || [];
+    return initials.join("").toUpperCase();
+  }
 
   return (
     <header className="bg-white text-white p-4">
@@ -49,12 +84,51 @@ const Header: React.FC = () => {
             Get Started
           </Link>
           {/* Botão de login */}
-          <Link
-            href="/Login"
-            className="px-4 py-2 bg-purple-700 text-white rounded transition-colors duration-300 hover:bg-purple-800"
-          >
-            Log in
-          </Link>
+          {
+            !user && (
+              <Link
+                href="/Login"
+                className="px-4 py-2 bg-purple-700 text-white rounded transition-colors duration-300 hover:bg-purple-800"
+              >
+                Log in
+              </Link>
+            )
+          }
+          {
+            user && (
+              <button
+                className="px-4 py-2 bg-purple-700 text-white rounded transition-colors duration-300 hover:bg-purple-800"
+                onClick={handleLogout}
+              >
+                Log Out
+              </button>
+      
+            )
+           
+          }
+          { user && userPhotoUrl ?(
+            <img 
+              src={userPhotoUrl} 
+              alt={user?.displayName ?? ""} 
+              className="ml-2  rounded-full border-2 border-white w-10 h-10"  
+            />
+
+          ):null}
+          { user && userInitials && !userPhotoUrl ? (
+            <div className="ml-2 rounded-full bg-purple-700 w-10 h-10 flex items-center justify-center text-white font-bold text-sm">
+              {userInitials}
+            </div>
+          ):null}
+
+          {/* <div  
+            className="
+              rounded-full 
+              border 
+              border-purple-700 
+              w-10 h-10"
+            >
+             <span>Dm</span>
+            </div> */}
         </div>
         <div className="-mr-2 flex md:hidden">
           <button
