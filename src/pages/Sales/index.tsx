@@ -1,15 +1,13 @@
-import Header from "@/src/components/Header";
-import MenuLateral from "@/src/components/MenuLateral";
-import Profile from "@/src/components/Profile";
-import TabelaDeEventos from "@/src/components/TabelaDeEventos";
-import TabelaDeEvento from "@/src/components/TabelaDeEventos";
-import withAuth from "@/src/components/withAuth/indext";
-import { faCalendarAlt, faTicketAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRouter } from "next/router";
-import React from "react";
+import Header from '@/src/components/Header';
+import MenuLateral from '@/src/components/MenuLateral';
+import TabelaDeEventos from '@/src/components/TabelaDeEventos';
+import TabelaDeVendedores from '@/src/components/TabelaDeVendedores';
+import withAuth from '@/src/components/withAuth/indext';
+import { useRouter } from 'next/router';
+import React from 'react'
 
-function Resume() {
+
+function Sales() {
   const router = useRouter();
   const { id } = router.query;
 
@@ -27,7 +25,7 @@ function Resume() {
         <main className="p-4 flex-1">
           <div className="flex  justify-between mb-4 pb-2 border-b-2">
             <div className="flex flex-1">
-              <h1>Meus Eventos</h1>
+              <h1>Vendedores</h1>
             </div>
             <div className="flex flex-1 justify-end items-center">
               <button className="
@@ -41,12 +39,12 @@ function Resume() {
                 hover:bg-green-700
                 "
                 >
-                  Novo Evento
+                  Novo Vendedor
                 </button>
             </div>
           </div>
         
-          <TabelaDeEventos></TabelaDeEventos>
+          <TabelaDeVendedores></TabelaDeVendedores>
         </main>
       </div>
 
@@ -59,4 +57,4 @@ function Resume() {
 };
 
 
-export default withAuth(Resume);
+export default withAuth(Sales);
