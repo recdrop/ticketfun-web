@@ -7,7 +7,7 @@ import React from 'react'
 export default function MenuLateral() {
   const router = useRouter();
 
-  const isCurrentPage = (path) => {
+  const isCurrentPage = (path: string) => {
     return router.pathname === path;
   };
 
