@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import {auth} from '../../../firebase'
-import {  onAuthStateChanged, User } from "firebase/auth";
+import { auth } from "../../../firebase";
+import { onAuthStateChanged, User } from "firebase/auth";
 import { useRouter } from "next/router";
 
 const Header: React.FC = () => {
@@ -29,8 +29,8 @@ const Header: React.FC = () => {
   const handleLogout = async () => {
     try {
       await auth.signOut();
-
-      router.push("/")
+      if (isMenuOpen) setIsMenuOpen(false);
+      router.push("/");
     } catch (error) {
       console.error("Erro ao realizar logout:", error);
     }
@@ -43,82 +43,76 @@ const Header: React.FC = () => {
   }
 
   return (
-    <header className="bg-white text-white p-4">
+    <header className="bg-white text-white p-5">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
           {/* Logo */}
-          <div className="mr-4">
+          <div className="mr-8">
             <Link href="/" className="text-xl font-bold">
-              <img src="/assets/imgs/logo.png" alt="Logo"></img>
+              <img src="/assets/imgs/logo.png" alt="Logo" />
             </Link>
           </div>
           {/* Campo de pesquisa */}
-          <div className="max-w-96 relative">
+          <div className="max-w-96 relative hidden lg:flex">
             <span className="absolute left-3 top-1/2 transform -translate-y-1/2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
+              <img
                 className="h-5 w-5 text-gray-400"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817-1.414 1.414-4.816-4.816A6 6 0 012 8z"
-                  clipRule="evenodd"
-                />
-              </svg>
+                src="/assets/svg/search.svg"
+                alt="Search"
+              />
             </span>
             <input
               type="text"
               placeholder="Pesquisar eventos, shows, cursos..."
-              className="w-full pl-10 pr-3 py-2 bg-white text-black rounded"
+              className="w-full pl-10 p-4 bg-white text-black rounded-xl border-gray-200 focus:border-purple-tf-900 outline-none border lg:min-w-[380px] text-lg"
             />
           </div>
         </div>
         {/* Menu */}
         <div className="hidden md:flex items-center">
-          <Link href="/produtor" className="mr-4 text-gray-400">
-            Seja um produtor
+          <Link
+            href="/produtor"
+            className="mr-4 text-lg text-gray-tf-400 hover:text-gray-400 hidden xl:flex"
+          >
+            Seja um produtor{" "}
+            <img className="ml-3" src="/assets/svg/arrow.svg" alt="Arrow" />
           </Link>
-          <Link href="/get-started" className="mr-4 text-gray-400">
-            Get Started
+          <Link
+            href="/get-started"
+            className="mr-4 text-lg text-gray-tf-400 hover:text-gray-400 hidden xl:flex"
+          >
+            Get Started{" "}
+            <img className="ml-3" src="/assets/svg/arrow.svg" alt="Arrow" />
           </Link>
           {/* Botão de login */}
-          {
-            !user && (
-              <Link
-                href="/Login"
-                className="px-4 py-2 bg-purple-700 text-white rounded transition-colors duration-300 hover:bg-purple-800"
-              >
-                Log in
-              </Link>
-            )
-          }
-          {
-            user && (
-              <button
-                className="px-4 py-2 bg-purple-700 text-white rounded transition-colors duration-300 hover:bg-purple-800"
-                onClick={handleLogout}
-              >
-                Log Out
-              </button>
-      
-            )
-           
-          }
-          { user && userPhotoUrl ?(
-            <img 
-              src={userPhotoUrl} 
-              alt={user?.displayName ?? ""} 
-              className="ml-2  rounded-full border-2 border-white w-10 h-10"  
+          {!user && (
+            <Link
+              href="/Login"
+              className="bg-purple-tf-900 hover:bg-purple-900 p-5 border-radius-tf box-border border-transparent-tf active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 not-italic font-bold text-xl text-center text-white"
+            >
+              Log in
+            </Link>
+          )}
+          {user && (
+            <button
+              className="bg-purple-tf-900 hover:bg-purple-900 p-5 border-radius-tf box-border border-transparent-tf active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 not-italic font-bold text-xl text-center text-white"
+              onClick={handleLogout}
+            >
+              Log Out
+            </button>
+          )}
+          {user && userPhotoUrl ? (
+            <img
+              src={userPhotoUrl}
+              alt={user?.displayName ?? ""}
+              className="ml-2  rounded-full border-2 border-white w-14 h-14"
             />
-
-          ):null}
-          { user && userInitials && !userPhotoUrl ? (
-            <div className="ml-2 rounded-full bg-purple-700 w-10 h-10 flex items-center justify-center text-white font-bold text-sm">
+          ) : null}
+          {user && userInitials && !userPhotoUrl ? (
+            <div className="ml-2 rounded-full bg-purple-700 w-14 h-14 flex items-center justify-center text-white font-bold text-sm">
               {userInitials}
             </div>
-          ):null}
+          ) : null}
 
           {/* <div  
             className="
@@ -133,25 +127,16 @@ const Header: React.FC = () => {
         <div className="-mr-2 flex md:hidden">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="inline-flex items-center justify-center p-2 rounded-md text-white bg-purple-700 hover:text-white hover:bg-purple-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            className="inline-flex items-center justify-center p-2 rounded-md text-white bg-purple-tf-900 hover:text-white hover:bg-purple-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
             aria-expanded="false"
           >
             <span className="sr-only">Abrir menu principal</span>
-            <svg
+            <img
               className="block h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+              src="/assets/svg/list.svg"
+              alt="Menu"
               aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
+            />
           </button>
         </div>
         <div
@@ -172,17 +157,27 @@ const Header: React.FC = () => {
             >
               Get Started
             </Link>
-            <Link
-              href="/Login"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-            >
-              Login
-            </Link>
+            {!user && (
+              <Link
+                href="/Login"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+              >
+                Login
+              </Link>
+            )}
+            {user && (
+              <a
+                className="block cursor-pointer px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                onClick={handleLogout}
+              >
+                Logout ({user?.displayName ?? ""})
+              </a>
+            )}
           </div>
           <button onClick={closeMenu} className="absolute top-3 right-3">
             <svg
               className="h-6 w-6 text-gray-500"
-              fill="currentColor"
+              fill="#999"
               viewBox="0 0 20 20"
             >
               <path

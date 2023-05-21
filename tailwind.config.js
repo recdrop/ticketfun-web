@@ -23,12 +23,23 @@ module.exports = {
         "red-tf": {
           900: "#EF2517",
         },
-        "red-tf": {
-          900: "#EF2517",
+        "gray-tf": {
+          400: "#D1D1CC",
         },
       },
       fontFamily: {
         helvetica: ["Helvetica Neue", "sans-serif"],
+      },
+    },
+    container: {
+      center: true,
+
+      screens: {
+        sm: "600px",
+        md: "728px",
+        lg: "984px",
+        xl: "1240px",
+        "2xl": "1512px",
       },
     },
   },
