@@ -1,11 +1,46 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { auth } from "../../../firebase";
+import { onAuthStateChanged, User } from "firebase/auth";
+import { useRouter } from "next/router";
 
 const Header: React.FC = () => {
+  const [user, setUser] = useState<User | null>(null);
+  const [userPhotoUrl, setUserPhotoUrl] = useState<string | null>(null);
+  const [userInitials, setUserInitials] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+      if (user) {
+        setUserPhotoUrl(user.photoURL);
+        setUserInitials(getUserInitials(user.displayName));
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      if (isMenuOpen) setIsMenuOpen(false);
+      router.push("/");
+    } catch (error) {
+      console.error("Erro ao realizar logout:", error);
+    }
+  };
+
+  function getUserInitials(name: string | null): string | null {
+    if (!name) return null;
+    const initials = name.match(/\b\w/g) || [];
+    return initials.join("").toUpperCase();
+  }
 
   return (
     <header className="bg-white text-white p-5">
@@ -37,25 +72,57 @@ const Header: React.FC = () => {
         <div className="hidden md:flex items-center">
           <Link
             href="/produtor"
-            className="mr-4 text-lg text-gray-tf-400 hover:text-gray-400 flex"
+            className="mr-4 text-lg text-gray-tf-400 hover:text-gray-400 hidden xl:flex"
           >
             Seja um produtor{" "}
             <img className="ml-3" src="/assets/svg/arrow.svg" alt="Arrow" />
           </Link>
           <Link
             href="/get-started"
-            className="mr-4 text-lg text-gray-tf-400 hover:text-gray-400 flex"
+            className="mr-4 text-lg text-gray-tf-400 hover:text-gray-400 hidden xl:flex"
           >
             Get Started{" "}
             <img className="ml-3" src="/assets/svg/arrow.svg" alt="Arrow" />
           </Link>
           {/* Botão de login */}
-          <Link
-            href="/Login"
-            className="bg-purple-tf-900 hover:bg-purple-900 p-5 border-radius-tf box-border border-transparent-tf active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 not-italic font-bold text-xl text-center text-white"
-          >
-            Log in
-          </Link>
+          {!user && (
+            <Link
+              href="/Login"
+              className="bg-purple-tf-900 hover:bg-purple-900 p-5 border-radius-tf box-border border-transparent-tf active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 not-italic font-bold text-xl text-center text-white"
+            >
+              Log in
+            </Link>
+          )}
+          {user && (
+            <button
+              className="bg-purple-tf-900 hover:bg-purple-900 p-5 border-radius-tf box-border border-transparent-tf active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 not-italic font-bold text-xl text-center text-white"
+              onClick={handleLogout}
+            >
+              Log Out
+            </button>
+          )}
+          {user && userPhotoUrl ? (
+            <img
+              src={userPhotoUrl}
+              alt={user?.displayName ?? ""}
+              className="ml-2  rounded-full border-2 border-white w-14 h-14"
+            />
+          ) : null}
+          {user && userInitials && !userPhotoUrl ? (
+            <div className="ml-2 rounded-full bg-purple-700 w-14 h-14 flex items-center justify-center text-white font-bold text-sm">
+              {userInitials}
+            </div>
+          ) : null}
+
+          {/* <div  
+            className="
+              rounded-full 
+              border 
+              border-purple-700 
+              w-10 h-10"
+            >
+             <span>Dm</span>
+            </div> */}
         </div>
         <div className="-mr-2 flex md:hidden">
           <button
@@ -64,21 +131,12 @@ const Header: React.FC = () => {
             aria-expanded="false"
           >
             <span className="sr-only">Abrir menu principal</span>
-            <svg
+            <img
               className="block h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+              src="/assets/svg/list.svg"
+              alt="Menu"
               aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
+            />
           </button>
         </div>
         <div
@@ -99,17 +157,27 @@ const Header: React.FC = () => {
             >
               Get Started
             </Link>
-            <Link
-              href="/Login"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-            >
-              Login
-            </Link>
+            {!user && (
+              <Link
+                href="/Login"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+              >
+                Login
+              </Link>
+            )}
+            {user && (
+              <a
+                className="block cursor-pointer px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                onClick={handleLogout}
+              >
+                Logout ({user?.displayName ?? ""})
+              </a>
+            )}
           </div>
           <button onClick={closeMenu} className="absolute top-3 right-3">
             <svg
               className="h-6 w-6 text-gray-500"
-              fill="currentColor"
+              fill="#999"
               viewBox="0 0 20 20"
             >
               <path
