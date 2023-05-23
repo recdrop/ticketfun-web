@@ -3,6 +3,12 @@ import React, { useEffect, useState } from "react";
 import { auth } from "../../../firebase";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { useRouter } from "next/router";
+import { getFirstName } from "@/src/utils/stringUtils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { Fragment } from "react";
+import { Menu, Transition } from "@headlessui/react";
+import classNames from "@/src/utils/classNames";
 
 const Header: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -70,59 +76,135 @@ const Header: React.FC = () => {
         </div>
         {/* Menu */}
         <div className="hidden md:flex items-center">
-          <Link
-            href="/produtor"
-            className="mr-4 text-lg text-gray-tf-400 hover:text-gray-400 hidden xl:flex"
-          >
-            Seja um produtor{" "}
-            <img className="ml-3" src="/assets/svg/arrow.svg" alt="Arrow" />
-          </Link>
-          <Link
-            href="/get-started"
-            className="mr-4 text-lg text-gray-tf-400 hover:text-gray-400 hidden xl:flex"
-          >
-            Get Started{" "}
-            <img className="ml-3" src="/assets/svg/arrow.svg" alt="Arrow" />
-          </Link>
-          {/* Botão de login */}
           {!user && (
-            <Link
-              href="/Login"
-              className="bg-purple-tf-900 hover:bg-purple-900 p-5 border-radius-tf box-border border-transparent-tf active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 not-italic font-bold text-xl text-center text-white"
-            >
-              Log in
-            </Link>
-          )}
-          {user && (
-            <button
-              className="bg-purple-tf-900 hover:bg-purple-900 p-5 border-radius-tf box-border border-transparent-tf active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 not-italic font-bold text-xl text-center text-white"
-              onClick={handleLogout}
-            >
-              Log Out
-            </button>
-          )}
-          {user && userPhotoUrl ? (
-            <img
-              src={userPhotoUrl}
-              alt={user?.displayName ?? ""}
-              className="ml-2  rounded-full border-2 border-white w-14 h-14"
-            />
-          ) : null}
-          {user && userInitials && !userPhotoUrl ? (
-            <div className="ml-2 rounded-full bg-purple-700 w-14 h-14 flex items-center justify-center text-white font-bold text-sm">
-              {userInitials}
-            </div>
-          ) : null}
+            <>
+              <Link
+                href="/produtor"
+                className="mr-4 text-lg text-gray-tf-400 hover:text-gray-400 hidden xl:flex"
+              >
+                Seja um produtor{" "}
+                <img className="ml-3" src="/assets/svg/arrow.svg" alt="Arrow" />
+              </Link>
+              <Link
+                href="/get-started"
+                className="mr-4 text-lg text-gray-tf-400 hover:text-gray-400 hidden xl:flex"
+              >
+                Get Started{" "}
+                <img className="ml-3" src="/assets/svg/arrow.svg" alt="Arrow" />
+              </Link>
 
-          {/* <div  
-            className="
-              rounded-full 
-              border 
-              border-purple-700 
-              w-10 h-10"
-            >
-             <span>Dm</span>
-            </div> */}
+              {/* Botão de login */}
+              <Link
+                href="/Login"
+                className="bg-purple-tf-900 hover:bg-purple-900 p-5 border-radius-tf box-border border-transparent-tf active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 not-italic font-bold text-xl text-center text-white"
+              >
+                Log in
+              </Link>
+            </>
+          )}
+
+          {user && (
+            <Menu as="div" className="relative inline-block text-left">
+              <div>
+                <Menu.Button className="bg-purple-tf-900 hover:bg-purple-900 p-5 border-radius-tf box-border border-transparent-tf active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 not-italic font-bold text-xl text-center text-white flex">
+                  {user && userPhotoUrl ? (
+                    <>
+                      <img
+                        src={userPhotoUrl}
+                        alt={user?.displayName ?? ""}
+                        className="rounded-full w-9 h-9 absolute mt-[-5px] ml-[-8px] border-2 border-white"
+                      />{" "}
+                    </>
+                  ) : null}
+
+                  {user && userPhotoUrl ? <div className="w-10"></div> : null}
+
+                  {getFirstName(user?.displayName ?? "...")}
+
+                  <FontAwesomeIcon
+                    icon={faChevronDown}
+                    className="ml-2 mt-1 h-5 text-white cursor-pointer"
+                  />
+                </Menu.Button>
+              </div>
+
+              <Transition
+                as={Fragment}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+              >
+                <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-purple-tf-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <div className="py-1">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          href="#"
+                          className={classNames(
+                            active
+                              ? "bg-gray-100 text-gray-900"
+                              : "text-white-700",
+                            "block px-4 py-2 text-lg"
+                          )}
+                        >
+                          Account settings
+                        </a>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          href="#"
+                          className={classNames(
+                            active
+                              ? "bg-gray-100 text-gray-900"
+                              : "text-white-700",
+                            "block px-4 py-2 text-lg"
+                          )}
+                        >
+                          Support
+                        </a>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          href="#"
+                          className={classNames(
+                            active
+                              ? "bg-gray-100 text-gray-900"
+                              : "text-white-700",
+                            "block px-4 py-2 text-lg"
+                          )}
+                        >
+                          License
+                        </a>
+                      )}
+                    </Menu.Item>{" "}
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          href="#"
+                          className={classNames(
+                            active
+                              ? "bg-gray-100 text-gray-900"
+                              : "text-white-700",
+                            "block px-4 py-2 text-lg"
+                          )}
+                          onClick={handleLogout}
+                        >
+                          Logout
+                        </a>
+                      )}
+                    </Menu.Item>
+                  </div>
+                </Menu.Items>
+              </Transition>
+            </Menu>
+          )}
         </div>
         <div className="-mr-2 flex md:hidden">
           <button

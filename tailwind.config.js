@@ -25,6 +25,7 @@ module.exports = {
         },
         "gray-tf": {
           400: "#D1D1CC",
+          900: "#6B6B68",
         },
       },
       fontFamily: {

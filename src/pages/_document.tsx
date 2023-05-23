@@ -9,6 +9,9 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;700&display=swap"
           />
+          <title>
+            Ticketfun - Seu passaporte para os melhores espetáculos!
+          </title>
         </Head>
         <body>
           <Main />

@@ -37,7 +37,7 @@ const Banner: React.FC = () => {
               Evento destaque em Nome da cidade
             </p>
             <div className="flex justify-between items-center container mx-auto">
-              <h3 className="text-xl text-white">Nome do Evento</h3>
+              <h3 className="text-6xl text-white">Blackartel Festival</h3>
               <button className="px-4 py-2 bg-purple-700 text-white rounded transition-colors duration-300 hover:bg-purple-800">
                 Comprar ingressos
               </button>
