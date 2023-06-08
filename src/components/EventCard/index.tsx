@@ -47,7 +47,7 @@ const EventCard: React.FC<EventCardProps> = ({
           </div>
         </div>
         <div className="absolute bottom-0 right-0 p-4 flex justify-center items-center">
-          <div className="flex items-center bg-purple-700 text-white h-10 w-10 pl-3 rounded-md">
+          <div className="flex items-center bg-blue-tf-700 text-white h-10 w-10 pl-3 rounded-md">
             <FontAwesomeIcon
               icon={faHeart}
               className="text-white text-lg cursor-pointer"
@@ -57,10 +57,14 @@ const EventCard: React.FC<EventCardProps> = ({
       </div>
 
       <div className="p-4">
-        <h3 className="text-date-card">{eventDate}</h3>
+        <h3 className="not-italic font-bold text-base leading-5 text-blue-tf-700">
+          {eventDate}
+        </h3>
         <h1 className="text-title-card">{eventName}</h1>
         {/* <p className="description ">{eventDescription}</p> */}
-        <p className="place-card">{eventLocation}</p>
+        <p className="not-italic font-normal text-base leading-5 text-gray-600">
+          {eventLocation}
+        </p>
         <div className="flex flex-row mt-6">
           <div className="flex flex-1">
             <Link
@@ -74,8 +78,8 @@ const EventCard: React.FC<EventCardProps> = ({
                   rounded-xl 
                   px-6 py-3 
                   text-white
-                  bg-purple-700 
-                  hover:bg-purple-800
+                  bg-blue-tf-700 
+                  hover:bg-blue-tf-800
                   hover:text-white
                   text-xl
                   "

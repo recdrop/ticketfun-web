@@ -23,6 +23,7 @@ const Header: React.FC = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
+
       if (user) {
         setUserPhotoUrl(user.photoURL);
         setUserInitials(getUserInitials(user.displayName));
@@ -70,7 +71,7 @@ const Header: React.FC = () => {
             <input
               type="text"
               placeholder="Pesquisar eventos, shows, cursos..."
-              className="w-full pl-10 p-4 bg-white text-black rounded-xl border-gray-200 focus:border-purple-tf-900 outline-none border lg:min-w-[380px] text-lg"
+              className="w-full pl-10 p-4 bg-white text-black rounded-xl border-gray-200 focus:border-blue-tf-700 outline-none border lg:min-w-[380px] text-lg"
             />
           </div>
         </div>
@@ -96,7 +97,7 @@ const Header: React.FC = () => {
               {/* Botão de login */}
               <Link
                 href="/Login"
-                className="bg-purple-tf-900 hover:bg-purple-900 p-5 border-radius-tf box-border border-transparent-tf active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 not-italic font-bold text-xl text-center text-white"
+                className="bg-blue-tf-700 hover:bg-blue-tf-900 p-5 border-radius-tf box-border border-transparent-tf active:bg-blue-tf-700 focus:outline-none focus:ring focus:ring-blue-tf-300 not-italic font-bold text-xl text-center text-white"
               >
                 Log in
               </Link>
@@ -106,14 +107,15 @@ const Header: React.FC = () => {
           {user && (
             <Menu as="div" className="relative inline-block text-left">
               <div>
-                <Menu.Button className="bg-purple-tf-900 hover:bg-purple-900 p-5 border-radius-tf box-border border-transparent-tf active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 not-italic font-bold text-xl text-center text-white flex">
+                <Menu.Button className="bg-blue-tf-700 hover:bg-blue-tf-900 p-5 border-radius-tf box-border border-transparent-tf active:bg-blue-tf-700 focus:outline-none focus:ring focus:ring-blue-tf-300 not-italic font-bold text-xl text-center text-white flex">
                   {user && userPhotoUrl ? (
                     <>
                       <img
-                        src={userPhotoUrl}
+                        src={userPhotoUrl + "?type=large"}
                         alt={user?.displayName ?? ""}
+                        referrerpolicy="no-referrer"
                         className="rounded-full w-9 h-9 absolute mt-[-5px] ml-[-8px] border-2 border-white"
-                      />{" "}
+                      />
                     </>
                   ) : null}
 
@@ -137,7 +139,7 @@ const Header: React.FC = () => {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-purple-tf-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-blue-tf-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                   <div className="py-1">
                     <Menu.Item>
                       {({ active }) => (
@@ -209,7 +211,7 @@ const Header: React.FC = () => {
         <div className="-mr-2 flex md:hidden">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="inline-flex items-center justify-center p-2 rounded-md text-white bg-purple-tf-900 hover:text-white hover:bg-purple-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            className="inline-flex items-center justify-center p-2 rounded-md text-white bg-blue-tf-700 hover:text-white hover:bg-blue-tf-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
             aria-expanded="false"
           >
             <span className="sr-only">Abrir menu principal</span>

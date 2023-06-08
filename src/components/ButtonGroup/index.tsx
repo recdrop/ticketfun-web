@@ -1,6 +1,8 @@
 import classNames from "@/src/utils/classNames";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import {
+  faArrowLeft,
+  faArrowRight,
   faBowlFood,
   faChild,
   faFilm,
@@ -13,29 +15,31 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
+import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
+import "react-horizontal-scrolling-menu/dist/styles.css";
+
 interface ButtonProps {
   label: string;
   active: boolean;
   icon?: IconProp;
+  onClick?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ label, active, icon }) => {
+const Button: React.FC<ButtonProps> = ({ label, active, icon, onClick }) => {
   return (
     <button
       className={classNames(
         active
-          ? "bg-purple-700 text-white rounded-lg"
-          : "bg-opacity-5 bg-black backdrop-blur-lg text-black rounded-lg",
+          ? "bg-white text-blue-tf-700 rounded-lg"
+          : "bg-blue-tf-100 backdrop-blur-lg text-blue-tf-700 rounded-lg",
         "flex items-center px-5 py-6 whitespace-nowrap md:w-auto mx-2"
       )}
+      onClick={onClick}
     >
       {icon && (
         <FontAwesomeIcon
           icon={icon}
-          className={classNames(
-            active ? "text-white" : "text-gray-tf-900",
-            "w-8 h-8 mr-2 "
-          )}
+          className={classNames("text-blue-tf-700", "w-8 h-8 mr-2 ")}
         />
       )}
       {label}
@@ -44,7 +48,8 @@ const Button: React.FC<ButtonProps> = ({ label, active, icon }) => {
 };
 
 const ButtonGroup: React.FC = () => {
-  const buttons = [
+  const [active, setActive] = React.useState(0);
+  const [buttons, setButtons] = React.useState([
     { label: "Festas e shows", active: true, icon: faMusic },
     {
       label: "Teatros e espetáculos",
@@ -57,19 +62,86 @@ const ButtonGroup: React.FC = () => {
     { label: "Esportes", active: false, icon: faSoccerBall },
     { label: "Cinema", active: false, icon: faFilm },
     { label: "Infantil", active: false, icon: faChild },
-  ];
+  ]);
+
+  const toggleActive = (idx: number) => {
+    setActive(idx);
+
+    const newButtons = buttons.map((button, index) => {
+      if (index === idx) {
+        return { ...button, active: true };
+      } else {
+        return { ...button, active: false };
+      }
+    });
+
+    setButtons(newButtons);
+  };
 
   return (
-    <div className="container mx-auto -mt-6 flex flex-col md:flex-row justify-between relative z-10 space-y-4 md:space-y-0 text-xl">
-      {buttons.map((button, index) => (
-        <Button
-          key={index}
-          label={button.label}
-          active={button.active}
-          icon={button.icon ?? undefined}
-        />
-      ))}
-    </div>
+    <>
+      <ScrollMenu
+        LeftArrow={LeftArrow}
+        RightArrow={RightArrow}
+        wrapperClassName="container mx-auto mt-8 flex flex-col md:flex-row relative z-10 space-y-4 md:space-y-0 text-xl overflow-hidden"
+        scrollContainerClassName="overflow-hidden"
+      >
+        {buttons.map((button, index) => (
+          <Button
+            key={index}
+            label={button.label}
+            active={button.active}
+            icon={button.icon ?? undefined}
+            onClick={() => toggleActive(index)}
+          />
+        ))}
+      </ScrollMenu>
+    </>
+  );
+};
+
+const LeftArrow = () => {
+  const { isFirstItemVisible, scrollPrev } =
+    React.useContext(VisibilityContext);
+
+  return (
+    <button
+      disabled={isFirstItemVisible}
+      onClick={() => scrollPrev()}
+      className={classNames(
+        "absolute",
+        "backdrop-blur-md text-blue-tf-700 rounded-lg",
+        "flex items-center px-5 py-6 whitespace-nowrap md:w-auto",
+        "z-20",
+        isFirstItemVisible ? "hidden" : "block"
+      )}
+    >
+      <FontAwesomeIcon
+        icon={faArrowLeft}
+        className={classNames("text-blue-tf-700", "p-1")}
+      />
+    </button>
+  );
+};
+
+const RightArrow = () => {
+  const { isLastItemVisible, scrollNext } = React.useContext(VisibilityContext);
+
+  return (
+    <button
+      disabled={isLastItemVisible}
+      onClick={() => scrollNext()}
+      className={classNames(
+        "backdrop-blur-md text-blue-tf-700 rounded-lg",
+        "flex items-center px-5 py-6 whitespace-nowrap md:w-auto",
+        isLastItemVisible ? "hidden" : "block"
+      )}
+    >
+      <FontAwesomeIcon
+        icon={faArrowRight}
+        className={classNames("text-blue-tf-700", "p-1")}
+      />
+    </button>
   );
 };
 

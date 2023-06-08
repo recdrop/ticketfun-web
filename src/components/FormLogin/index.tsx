@@ -129,8 +129,8 @@ const FormLogin = () => {
                 placeholder-gray-500 
                 text-gray-900 
                 focus:outline-none 
-                focus:ring-purple-500 
-                focus:border-purple-500
+                focus:ring-blue-tf-500 
+                focus:border-blue-tf-500
                 focus:z-10 "
                   placeholder="Endereço de e-mail"
                   value={email}
@@ -163,8 +163,8 @@ const FormLogin = () => {
       placeholder-gray-500 
       text-gray-900 
       focus:outline-none 
-      focus:ring-purple-500 
-      focus:border-purple-500 
+      focus:ring-blue-tf-500 
+      focus:border-blue-tf-500 
       focus:z-10 
     "
                     placeholder="Senha"
@@ -174,7 +174,7 @@ const FormLogin = () => {
                   <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                     <FontAwesomeIcon
                       icon={showPassword ? faEyeSlash : faEye}
-                      className="h-5 text-purple-700 cursor-pointer"
+                      className="h-5 text-blue-tf-700 cursor-pointer"
                       onClick={() => setShowPassword(!showPassword)}
                     />
                   </div>
@@ -204,12 +204,12 @@ const FormLogin = () => {
               font-medium 
               rounded-md 
               text-white 
-              bg-purple-700 
-              hover:bg-purple-800 
+              bg-blue-tf-700 
+              hover:bg-blue-tf-800 
               focus:outline-none 
               focus:ring-2 
               focus:ring-offset-2 
-              focus:ring-purple-700"
+              focus:ring-blue-tf-700"
               >
                 Entrar
               </button>
@@ -218,7 +218,7 @@ const FormLogin = () => {
               <div className="flex flex-1">
                 <Link
                   href="/SignUp"
-                  className="text-purple-500 font-bold text-sm hover:text-purple-800"
+                  className="text-blue-tf-500 font-bold text-sm hover:text-blue-tf-800"
                 >
                   Cadastrar-se
                 </Link>
@@ -226,7 +226,7 @@ const FormLogin = () => {
               <div className="flex flex-1 justify-end">
                 <Link
                   href="/ForgotPassword"
-                  className="text-purple-500 font-bold text-sm hover:text-purple-800"
+                  className="text-blue-tf-500 font-bold text-sm hover:text-blue-tf-800"
                 >
                   Esqueceu a senha?
                 </Link>
@@ -246,17 +246,17 @@ const FormLogin = () => {
               items-center
        
               border 
-              border-purple-700
+              border-blue-tf-700
               text-lg
               font-medium 
               rounded-md 
-              text-purple-700
+              text-blue-tf-700
               bg-white
-              hover:bg-purple-700 hover:text-white 
+              hover:bg-blue-tf-700 hover:text-white 
               focus:outline-none 
               focus:ring-2 
               focus:ring-offset-2 
-              focus:ring-purple-700"'
+              focus:ring-blue-tf-700"'
                 >
                   Voltar
                 </Link>

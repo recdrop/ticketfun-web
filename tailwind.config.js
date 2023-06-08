@@ -27,6 +27,17 @@ module.exports = {
           400: "#D1D1CC",
           900: "#6B6B68",
         },
+        "blue-tf": {
+          100: "#DBE8FF",
+          200: "#99C1FF",
+          300: "#66A3FF",
+          400: "#3384FF",
+          500: "#0066FF",
+          600: "#0052CC",
+          800: "#003C99",
+          700: "#2970FF",
+          900: "#1f5acc",
+        },
       },
       fontFamily: {
         helvetica: ["Helvetica Neue", "sans-serif"],

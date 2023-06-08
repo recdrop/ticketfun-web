@@ -33,14 +33,10 @@ const Banner: React.FC = () => {
             className="w-full h-full object-cover"
           />
           <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-transparent to-transparent py-10 px-4">
-            <p className="text-2xl text-white mb-2 container mx-auto">
-              Evento destaque em Nome da cidade
-            </p>
             <div className="flex justify-between items-center container mx-auto">
-              <h3 className="text-6xl text-white">Blackartel Festival</h3>
-              <button className="px-4 py-2 bg-purple-700 text-white rounded transition-colors duration-300 hover:bg-purple-800">
-                Comprar ingressos
-              </button>
+              <h3 className="not-italic pb-16 font-bold text-6xl text-white">
+                Blackartel Festival
+              </h3>
             </div>
           </div>
         </SwiperSlide>
