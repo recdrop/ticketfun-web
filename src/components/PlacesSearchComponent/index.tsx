@@ -13,7 +13,7 @@ const PlacesSearchComponent: React.FC = () => {
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [coordinates, setCoordinates] = useState(null);
 
-  const handleInput = async (event) => {
+  const handleInput = async (event:any) => {
     setInput(event.target.value);
 
     if (input.length > 2) {
