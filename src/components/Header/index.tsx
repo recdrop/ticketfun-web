@@ -113,7 +113,7 @@ const Header: React.FC = () => {
                       <img
                         src={userPhotoUrl + "?type=large"}
                         alt={user?.displayName ?? ""}
-                        referrerpolicy="no-referrer"
+                        referrerPolicy="no-referrer"
                         className="rounded-full w-9 h-9 absolute mt-[-5px] ml-[-8px] border-2 border-white"
                       />
                     </>
