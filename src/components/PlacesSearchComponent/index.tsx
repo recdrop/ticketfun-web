@@ -7,10 +7,31 @@ const mapStyles = {
   width: "100%",
 };
 
+interface Place {
+  place_id: string;
+  description: string;
+  address_components: {
+    types: string[];
+    long_name: string;
+    short_name: string;
+  }[];
+  // adicione outras propriedades conforme necessário
+}
+
+interface SelectedPlace extends Place {
+  geometry: {
+    location: {
+      lat: number;
+      lng: number;
+    };
+  };
+  // adicione outras propriedades conforme necessário
+}
+
 const PlacesSearchComponent: React.FC = () => {
   const [input, setInput] = useState('');
-  const [places, setPlaces] = useState([]);
-  const [selectedPlace, setSelectedPlace] = useState(null);
+  const [places, setPlaces] = useState<Place[]>([]);
+  const [selectedPlace, setSelectedPlace] = useState<SelectedPlace | null>(null);
   const [coordinates, setCoordinates] = useState(null);
 
   const handleInput = async (event:any) => {
@@ -59,6 +80,7 @@ const PlacesSearchComponent: React.FC = () => {
       {places.length > 0 && (
         <div>
           {places.map((place) => (
+            
             <div 
               className='
                 border-b 
