@@ -138,3 +138,9 @@ h3 {
 .border-method-purple-tf {
   border: 2px solid #731dd8;
 }
+
+
+.description-editor {
+  min-height: 200px;
+  /* Defina a altura mínima desejada */
+}

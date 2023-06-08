@@ -12,7 +12,7 @@ export default function MenuLateral() {
   };
 
   return (
-    <div className="w-96 flex flex-col items-center h-px-1200 bg-white ">
+    <div className="lg:w-96 sm:w-24 flex flex-col items-center h-px-1200 bg-white ">
       {/* Menu lateral */}
       <div className="w-full mt-4 rounded-sm shadow-sm">
         <Link
@@ -20,22 +20,20 @@ export default function MenuLateral() {
           className={`hover:bg-purple-200 hover:text-purple-700 font-bold text-base hover:border-l-4 hover:border-l-purple-800 h-16 flex items-center px-6 cursor-pointer ${isCurrentPage('/Resume') ? 'text-purple-700 border-l-4 border-l-purple-800' : ''}`}
         >
           <FontAwesomeIcon icon={faCalendarAlt} className={`mr-2 ${isCurrentPage('/Resume') ? 'text-purple-700':'text-gray-500' }`} />
-          Meus Eventos
+          <span className="hidden lg:inline-block">Meus Eventos</span>
         </Link>
         <div
           className={`hover:bg-purple-200 hover:text-purple-700 font-bold text-base hover:border-l-4 hover:border-l-purple-800 h-16 flex items-center px-6 cursor-pointer ${isCurrentPage('/tickets') ? 'text-purple-700 border-l-4 border-l-purple-800' : ''}`}
         >
           <FontAwesomeIcon icon={faTicketAlt} className={`mr-2 ${isCurrentPage('/tickets') ? 'text-purple-700':'text-gray-500' }`} />
-          Meus Ingressos
+          <span className="hidden lg:inline-block">Meus Ingressos</span>
         </div>
         <Link
           href="/Sales"
           className={`hover:bg-purple-200 hover:text-purple-700 font-bold text-base hover:border-l-4 hover:border-l-purple-800 h-16 flex items-center px-6 cursor-pointer ${isCurrentPage('/Sales') ? 'text-purple-700 border-l-4 border-l-purple-800' : ''}`}
         >
-     
             <FontAwesomeIcon icon={faMoneyBillAlt} className={`mr-2 ${isCurrentPage('/Sales') ? 'text-purple-700':'text-gray-500' }`} />
-            Vendedores
-
+            <span className="hidden lg:inline-block">Vendedores</span>
         </Link>
       </div>
     </div>

@@ -4,8 +4,9 @@ import Profile from "@/src/components/Profile";
 import TabelaDeEventos from "@/src/components/TabelaDeEventos";
 import TabelaDeEvento from "@/src/components/TabelaDeEventos";
 import withAuth from "@/src/components/withAuth/indext";
-import { faCalendarAlt, faTicketAlt } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarAlt, faPlus, faTicketAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -29,8 +30,10 @@ function Resume() {
             <div className="flex flex-1">
               <h1>Meus Eventos</h1>
             </div>
-            <div className="flex flex-1 justify-end items-center">
-              <button className="
+            <div className="flex flex-1 justify-center sm:justify-end items-center">
+              <Link href="/NewEvent" className="
+                sm:flex
+                hidden
                 h-10 
                 w-40 
                 bg-green-600
@@ -39,10 +42,33 @@ function Resume() {
                 font-bold
                 rounded-md
                 hover:bg-green-700
+                justify-center
+                items-center
+    
                 "
                 >
                   Novo Evento
-                </button>
+                </Link>
+              <Link href="/NewEvent" className="
+                mr-5
+                sm:mr-0
+                flex
+                h-10 
+                w-10 
+                sm:hidden
+                bg-green-600
+                text-white
+                uppercase
+                font-bold
+                rounded-md
+                hover:bg-green-700
+                justify-center
+                items-center
+    
+                "
+                >
+                  <FontAwesomeIcon icon={faPlus} size='2x' />
+                </Link>
             </div>
           </div>
         
