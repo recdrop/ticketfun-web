@@ -1,27 +1,27 @@
-// Importando bibliotecas necessárias
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-// Criação do componente UploadComponent
-const UploadComponent: React.FC = () => {
-  const [previewImages, setPreviewImages] = useState([]);
+interface Accept {
+   accept:string[]
+}
 
-  // Criação da função para lidar com o upload do arquivo
-  const onDrop = useCallback(acceptedFiles => {
-    // Atualize o estado para incluir as novas imagens
+const UploadComponent: React.FC = () => {
+
+  
+  const [previewImages, setPreviewImages] = useState<string[]>([]);
+
+  const onDrop = useCallback((acceptedFiles: File[]) => {
     setPreviewImages(prevState => [
       ...prevState,
       ...acceptedFiles.map(file => URL.createObjectURL(file))
     ]);
   }, []);
 
-  // Função para remover a imagem da pré-visualização
-  const removeImage = (imageToRemove) => {
+  const removeImage = (imageToRemove: string) => {
     setPreviewImages(prevState => prevState.filter(image => image !== imageToRemove));
   };
 
-  // Utilizando o hook useDropzone
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept: 'image/*' });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept:"image/*"  });
 
   return (
     <div className="w-full">
