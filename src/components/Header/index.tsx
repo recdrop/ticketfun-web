@@ -49,7 +49,7 @@ const Header: React.FC = () => {
           {/* Logo */}
           <div className="mr-8">
             <Link href="/" className="text-xl font-bold">
-              <img src="/assets/imgs/logo.png" alt="Logo" />
+              <img src="/assets/svg/logo-azul.svg" alt="Logo" />
             </Link>
           </div>
           {/* Campo de pesquisa */}
@@ -71,7 +71,7 @@ const Header: React.FC = () => {
         {/* Menu */}
         <div className="hidden md:flex items-center">
           <Link
-            href="/produtor"
+            href="/Producer"
             className="mr-4 text-lg text-gray-tf-400 hover:text-gray-400 hidden xl:flex"
           >
             Seja um produtor{" "}
