@@ -16,7 +16,7 @@ export default function MenuLateral() {
   };
 
   return (
-    <div className="w-96 flex flex-col items-center h-px-1200 bg-white ">
+    <div className="lg:w-96 sm:w-24 flex flex-col items-center h-px-1200 bg-white ">
       {/* Menu lateral */}
       <div className="w-full mt-4 rounded-sm shadow-sm">
         <Link
@@ -27,13 +27,8 @@ export default function MenuLateral() {
               : ""
           }`}
         >
-          <FontAwesomeIcon
-            icon={faCalendarAlt}
-            className={`mr-2 ${
-              isCurrentPage("/Resume") ? "text-blue-tf-700" : "text-gray-500"
-            }`}
-          />
-          Meus Eventos
+          <FontAwesomeIcon icon={faCalendarAlt} className={`mr-2 ${isCurrentPage('/Resume') ? 'text-purple-700':'text-gray-500' }`} />
+          <span className="hidden lg:inline-block">Meus Eventos</span>
         </Link>
         <div
           className={`hover:bg-blue-tf-200 hover:text-blue-tf-700 font-bold text-base hover:border-l-4 hover:border-l-blue-tf-800 h-16 flex items-center px-6 cursor-pointer ${
@@ -42,13 +37,8 @@ export default function MenuLateral() {
               : ""
           }`}
         >
-          <FontAwesomeIcon
-            icon={faTicketAlt}
-            className={`mr-2 ${
-              isCurrentPage("/tickets") ? "text-blue-tf-700" : "text-gray-500"
-            }`}
-          />
-          Meus Ingressos
+          <FontAwesomeIcon icon={faTicketAlt} className={`mr-2 ${isCurrentPage('/tickets') ? 'text-purple-700':'text-gray-500' }`} />
+          <span className="hidden lg:inline-block">Meus Ingressos</span>
         </div>
         <Link
           href="/Sales"
@@ -58,13 +48,8 @@ export default function MenuLateral() {
               : ""
           }`}
         >
-          <FontAwesomeIcon
-            icon={faMoneyBillAlt}
-            className={`mr-2 ${
-              isCurrentPage("/Sales") ? "text-blue-tf-700" : "text-gray-500"
-            }`}
-          />
-          Vendedores
+            <FontAwesomeIcon icon={faMoneyBillAlt} className={`mr-2 ${isCurrentPage('/Sales') ? 'text-purple-700':'text-gray-500' }`} />
+            <span className="hidden lg:inline-block">Vendedores</span>
         </Link>
       </div>
     </div>
