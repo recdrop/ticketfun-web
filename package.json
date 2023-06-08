@@ -58,7 +58,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format:fix && npm run build"
+      "pre-commit": "npm run format:fix",
+      "pre-push": "npm run build"
     }
   }
 }
