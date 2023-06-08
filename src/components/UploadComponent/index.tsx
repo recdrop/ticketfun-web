@@ -21,7 +21,7 @@ const UploadComponent: React.FC = () => {
     setPreviewImages(prevState => prevState.filter(image => image !== imageToRemove));
   };
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept:"image/*"  });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
     <div className="w-full">
