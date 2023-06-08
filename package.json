@@ -9,8 +9,7 @@
     "lint": "eslint ./",
     "lint-fix": "eslint ./ --fix",
     "format": "prettier --check --ignore-path .gitignore .",
-    "format:fix": "prettier --write --ignore-path .gitignore .",
-    "precommit": "npm run format:fix && npm run build"
+    "format:fix": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -59,7 +58,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && pretty-quick --staged"
+      "pre-commit": "npm run format:fix && npm run build"
     }
   }
 }
