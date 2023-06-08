@@ -22,7 +22,7 @@ const PlacesSearchComponent: React.FC = () => {
     }
   };
 
-  const handlePlaceClick = async (placeId) => {
+  const handlePlaceClick = async (placeId:string) => {
     const details = await getPlaceDetails(placeId);
     console.log(details)
     setSelectedPlace(details);
