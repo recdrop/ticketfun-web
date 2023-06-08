@@ -27,7 +27,12 @@ export default function MenuLateral() {
               : ""
           }`}
         >
-          <FontAwesomeIcon icon={faCalendarAlt} className={`mr-2 ${isCurrentPage('/Resume') ? 'text-purple-700':'text-gray-500' }`} />
+          <FontAwesomeIcon
+            icon={faCalendarAlt}
+            className={`mr-2 ${
+              isCurrentPage("/Resume") ? "text-purple-700" : "text-gray-500"
+            }`}
+          />
           <span className="hidden lg:inline-block">Meus Eventos</span>
         </Link>
         <div
@@ -37,7 +42,12 @@ export default function MenuLateral() {
               : ""
           }`}
         >
-          <FontAwesomeIcon icon={faTicketAlt} className={`mr-2 ${isCurrentPage('/tickets') ? 'text-purple-700':'text-gray-500' }`} />
+          <FontAwesomeIcon
+            icon={faTicketAlt}
+            className={`mr-2 ${
+              isCurrentPage("/tickets") ? "text-purple-700" : "text-gray-500"
+            }`}
+          />
           <span className="hidden lg:inline-block">Meus Ingressos</span>
         </div>
         <Link
@@ -48,8 +58,13 @@ export default function MenuLateral() {
               : ""
           }`}
         >
-            <FontAwesomeIcon icon={faMoneyBillAlt} className={`mr-2 ${isCurrentPage('/Sales') ? 'text-purple-700':'text-gray-500' }`} />
-            <span className="hidden lg:inline-block">Vendedores</span>
+          <FontAwesomeIcon
+            icon={faMoneyBillAlt}
+            className={`mr-2 ${
+              isCurrentPage("/Sales") ? "text-purple-700" : "text-gray-500"
+            }`}
+          />
+          <span className="hidden lg:inline-block">Vendedores</span>
         </Link>
       </div>
     </div>
