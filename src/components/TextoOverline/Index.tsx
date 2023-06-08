@@ -19,7 +19,7 @@ function TextOverline({ texto }: TextOverlineProps) {
             translate-x--1/2 
             bg-white
             px-10 
-            text-purple-700 
+            text-blue-tf-700 
             text-base w-52
             flex
             justify-center

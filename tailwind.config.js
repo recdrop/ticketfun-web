@@ -8,14 +8,14 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-     borderWidth: {
-      DEFAULT: '1px',
-      '0': '0',
-      '2': '2px',
-      '3': '3px',
-      '4': '4px',
-      '6': '6px',
-      '8': '8px',
+    borderWidth: {
+      DEFAULT: "1px",
+      0: "0",
+      2: "2px",
+      3: "3px",
+      4: "4px",
+      6: "6px",
+      8: "8px",
     },
     extend: {
       backgroundImage: {
@@ -34,6 +34,18 @@ module.exports = {
         },
         "gray-tf": {
           400: "#D1D1CC",
+          900: "#6B6B68",
+        },
+        "blue-tf": {
+          100: "#DBE8FF",
+          200: "#99C1FF",
+          300: "#66A3FF",
+          400: "#3384FF",
+          500: "#0066FF",
+          600: "#0052CC",
+          800: "#003C99",
+          700: "#2970FF",
+          900: "#1f5acc",
         },
       },
       fontFamily: {

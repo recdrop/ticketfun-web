@@ -104,7 +104,7 @@ function Event() {
                   </div>
                 </div>
 
-                <div className="background-card mt-4 rounded-2xl p-6 flex justify-between align-center border-card-purple-tf">
+                <div className="background-card mt-4 rounded-2xl p-6 flex justify-between align-center border-[7px] border-blue-tf-900">
                   <div className="block">
                     <span className="block not-italic font-medium text-md lg:text-xl leading-6 text-white mb-1">
                       Área VIP - Inteira
@@ -181,13 +181,13 @@ function Event() {
                   </div>
 
                   <div className="hidden lg:flex">
-                    <span className="cursor-pointer not-italic font-medium text-xl leading-6 text-right text-purple-tf-900">
+                    <span className="cursor-pointer not-italic font-medium text-xl leading-6 text-right text-blue-tf-700">
                       Aplicar cupom
                     </span>
                   </div>
                 </div>
 
-                <button className="mt-4 w-full bg-purple-tf-900 hover:bg-purple-900 p-5 border-radius-tf box-border border-transparent-tf active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 not-italic font-medium text-2xl leading-7 text-center text-white">
+                <button className="mt-4 w-full bg-blue-tf-700 hover:bg-blue-tf-900 p-5 border-radius-tf box-border border-transparent-tf active:bg-blue-tf-700 focus:outline-none focus:ring focus:ring-blue-tf-300 not-italic font-medium text-2xl leading-7 text-center text-white">
                   Comprar ingressos
                 </button>
               </div>
