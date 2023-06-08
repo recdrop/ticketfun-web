@@ -1,9 +1,6 @@
-import AutoCompleteGooglePlace from '@/src/components/AutoCompleteGooglePlace';
-import Autocomplete from '@/src/components/AutocompletePlace';
+
 import DescriptionEditor from '@/src/components/DescriptionEditor';
 import Header from '@/src/components/Header';
-import LocationSearch from '@/src/components/LocationSearch';
-import MenuLateral from '@/src/components/MenuLateral';
 import PlacesSearchComponent from '@/src/components/PlacesSearchComponent';
 import UploadComponent from '@/src/components/UploadComponent';
 import withAuth from '@/src/components/withAuth/indext'
@@ -188,44 +185,12 @@ import React, { useState } from 'react'
                 <h2>Dados do Local do Evento</h2>
               </div>
             </div>
-            {/* <div className='flex flex-1 flex-col mt-3'>
-              <div className='flex flex-1  text-base'>
-                Nome do Local:
-              </div>
-              <div className='flex flex-1 mr-3'>
-                <input 
-                  type='text' 
-                  name='namePlace' 
-                  placeholder='Nome do Local'
-                  className=' 
-                    appearance-none 
-                    rounded-md 
-                    h-16 
-                    relative 
-                    block 
-                    w-full 
-                    px-3 
-                    py-2 
-                    border 
-                    border-gray-200 
-                    placeholder-gray-500 
-                    text-gray-900 
-                    focus:outline-none 
-                    focus:ring-purple-500 
-                    focus:border-purple-500
-                    focus:z-10 
-                  ' 
-                />
-              </div>
-            </div> */}
+
             <div className='flex flex-1 flex-col mt-3'>
               <div className='flex flex-1  text-base'>
                Informe o endereço ou nome do local:
               </div>
               <div className='flex flex-1 mr-3'>
-               {/* <LocationSearch apiKey='AIzaSyCChapqfxcu9GbU3VpPBNE9h1GK5ortbBo' /> */}
-               {/* <Autocomplete></Autocomplete> */}
-               {/* <AutoCompleteGooglePlace></AutoCompleteGooglePlace> */}
                <PlacesSearchComponent></PlacesSearchComponent>
 
               </div>
