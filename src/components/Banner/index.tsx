@@ -48,7 +48,7 @@ const Banner: React.FC = () => {
             />
             <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-transparent to-transparent py-10 px-4">
               <div className="flex justify-between items-center container mx-auto">
-                <h3 className="not-italic pb-16 font-bold text-6xl text-white">
+                <h3 className="text-center sm:text-left not-italic pb-16 font-bold text-6xl text-white">
                   Blackartel Festival
                 </h3>
               </div>
@@ -101,11 +101,16 @@ const Banner: React.FC = () => {
                     flex"
                   onClick={() => setIsOpen(true)}
                 >
-                  <span className="mt-1">Evento destaque em</span>
-                  <b className="text-3xl ml-4">Salvador</b>
+                  <span className="mt-1 text-sm sm:text-lg">
+                    Evento destaque em
+                  </span>
+                  <b className="text-xl sm:text-3xl ml-1 sm:ml-4">Salvador</b>
                   <FontAwesomeIcon
                     icon={faAngleDown}
-                    className={classNames("text-white", "ml-3 mt-3")}
+                    className={classNames(
+                      "text-white",
+                      "ml-2 sm:ml-3 mt-1 sm:mt-3"
+                    )}
                   />
                 </button>
               </div>

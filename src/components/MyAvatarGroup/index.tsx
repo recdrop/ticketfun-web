@@ -16,7 +16,13 @@ function AvatarGroup({ avatars, maxVisible }: AvatarGroupProps) {
   const hiddenAvatarCount = avatars.length - maxVisible;
 
   return (
-    <div className="flex w-full -space-x-4">
+    <div className="flex flex-row-reverse w-full -space-x-4">
+      {hiddenAvatarCount > 0 && (
+        <div className="-ml-4 rounded-full text-gray-600 bg-gray-100 flex items-center justify-center font-medium text-xs w-10 h-10">
+          +{hiddenAvatarCount}
+        </div>
+      )}
+
       {visibleAvatars.map((avatar) => (
         <img
           key={avatar.id}
@@ -25,11 +31,6 @@ function AvatarGroup({ avatars, maxVisible }: AvatarGroupProps) {
           className="rounded-full border-2 border-white w-10 h-10"
         />
       ))}
-      {hiddenAvatarCount > 0 && (
-        <div className=" rounded-full text-gray-600 bg-gray-100 flex items-center justify-center font-medium text-xs w-10 h-10">
-          +{hiddenAvatarCount}
-        </div>
-      )}
     </div>
   );
 }
