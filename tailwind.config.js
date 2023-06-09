@@ -34,6 +34,8 @@ module.exports = {
         },
         "gray-tf": {
           400: "#D1D1CC",
+          500: "#242423",
+          600: "#8D8D8D",
           900: "#6B6B68",
         },
         "blue-tf": {
@@ -59,8 +61,8 @@ module.exports = {
         sm: "600px",
         md: "728px",
         lg: "984px",
-        xl: "1240px",
-        "2xl": "1512px",
+        xl: "1272px",
+        "2xl": "1513px",
       },
     },
   },

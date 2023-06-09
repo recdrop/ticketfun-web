@@ -40,16 +40,17 @@ const HomePage: React.FC = () => {
       <Header />
       <Banner />
       <ButtonGroup />
-      <main className="container mx-auto px-4 pt-8 pb-48">
+      <main className="container mx-auto px-2 pt-8 pb-48">
         <h2 className="text-2xl font-bold my-8 text-center">
           Próximos eventos
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {events.map((event, index) => (
             <EventCard
               key={index}
               image={event.image}
               eventId={event.id}
+              eventAge={Number(Math.floor(Math.random() * 100) + 1)}
               eventName={event.name}
               eventDescription={event.description}
               eventLocation={event.location}
@@ -60,12 +61,13 @@ const HomePage: React.FC = () => {
         <h2 className="text-2xl font-bold my-8 text-center">
           Próximos eventos
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {events.map((event, index) => (
             <EventCard
               key={index}
               image={event.image}
               eventId={event.id}
+              eventAge={Number(Math.floor(Math.random() * 100) + 1)}
               eventName={event.name}
               eventDescription={event.description}
               eventLocation={event.location}
