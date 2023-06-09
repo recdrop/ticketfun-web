@@ -5,7 +5,6 @@ module.exports = {
   },
   extends: [
     "plugin:react/recommended",
-    "standard",
     "plugin:prettier/recommended",
     "next/core-web-vitals",
   ],

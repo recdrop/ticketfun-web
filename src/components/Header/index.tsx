@@ -1,14 +1,13 @@
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { auth } from "../../../firebase";
-import { onAuthStateChanged, User } from "firebase/auth";
-import { useRouter } from "next/router";
-import { getFirstName } from "@/src/utils/stringUtils";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
 import classNames from "@/src/utils/classNames";
+import { getFirstName } from "@/src/utils/stringUtils";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Menu, Transition } from "@headlessui/react";
+import { User, onAuthStateChanged } from "firebase/auth";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { Fragment, useEffect, useState } from "react";
+import { auth } from "../../../firebase";
 
 const Header: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
