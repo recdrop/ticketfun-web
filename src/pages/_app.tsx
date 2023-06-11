@@ -5,6 +5,8 @@ import { AppProps } from "next/app";
 import { ToastContainer } from "react-toastify";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Head from "next/head";
+import { EventCityProvider } from "../hooks/useEventCity";
+import { EventTypeProvider } from "../hooks/useEventType";
 
 config.autoAddCss = false;
 
@@ -14,7 +16,11 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>Ticketfun - Seu passaporte para os melhores espetáculos!</title>
       </Head>
-      <Component {...pageProps} />
+      <EventTypeProvider>
+        <EventCityProvider>
+          <Component {...pageProps} />
+        </EventCityProvider>
+      </EventTypeProvider>
       <ToastContainer />
     </>
   );
