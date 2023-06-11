@@ -22,7 +22,7 @@ const EventTypeContext = createContext<EventTypeState>({
   updateEventType: (type: number) => void 0,
 });
 
-export const EventTypeProvider: FC = ({ children }: EventTypeProviderProps) => {
+export const EventTypeProvider = ({ children }: EventTypeProviderProps) => {
   const [eventType, setEventType] = usePersistState<number>("event_type", 1);
 
   const updateEventType = useCallback(

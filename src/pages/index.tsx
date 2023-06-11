@@ -148,7 +148,8 @@ const HomePage: React.FC = () => {
         <h2 className="text-4xl sm:text-5xl font-normal my-8 text-center">
           Popular em{" "}
           <b className="text-blue-tf-700 cursor-pointer items-center align-middle">
-            {getButtonById(currentType) && getButtonById(currentType).label}
+            {getButtonById(currentType) !== undefined &&
+              getButtonById(currentType)?.label}
             <FontAwesomeIcon
               icon={faChevronDown}
               className="absolute ml-2 mt-5 text-xl text-blue-tf cursor-pointer"

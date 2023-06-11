@@ -22,7 +22,7 @@ const EventCityContext = createContext<EventCityState>({
   updateEventCity: (city: string) => void 0,
 });
 
-export const EventCityProvider: FC = ({ children }: EventCityProviderProps) => {
+export const EventCityProvider = ({ children }: EventCityProviderProps) => {
   const [eventCity, setEventCity] = usePersistState<string>(
     "event_city",
     "São Paulo"
