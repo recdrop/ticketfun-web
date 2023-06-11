@@ -6,86 +6,13 @@
 html,
 body {
   font-family: "Helvetica Neue", sans-serif;
-
-  font-size: 0.875rem; /* 14px */
-  font-weight: 400;
-  overflow-x: hidden;
-  background-color: #F7F7F1;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-input {
-  font-size: 1rem;
-}
-
-h1 {
-  font-family: "Helvetica Neue", sans-serif;
-  font-weight: 700;
-  font-size: 2.125rem; /* 34px */
-  color: #242423;
-}
-
-h2 {
-  font-family: "Helvetica Neue", sans-serif;
-  font-weight: 500;
-  font-size: 1.375rem; /* 22px */
-  color: #242423;
-}
-
-h3 {
-  font-family: "Helvetica Neue", sans-serif;
-  font-weight: 400;
-  font-size: 1.125rem; /* 18px */
-  color: #242423;
+  background-color: #ffffff;
 }
 
 .description {
   font-family: "Helvetica Neue", sans-serif;
   font-weight: 400;
   font-size: 0.75rem; /* 12px */
-}
-
-.font-medium {
-  font-weight: 500;
-}
-
-.font-semibold {
-  font-weight: 700;
-}
-
-.font-bold {
-  font-weight: 700;
-}
-
-.font-light {
-  font-weight: 300;
-}
-.font-regular {
-  font-weight: 400;
-}
-
-@layer utilities {
-  .text-date-card {
-    font-family: "Helvetica Neue";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
-    color: #731dd8;
-  }
-
-  .place-card {
-    font-family: "Helvetica Neue";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-    color: #8d8d8d;
-  }
 }
 
 .blur-tf {
@@ -129,18 +56,4 @@ h3 {
   background: rgba(0, 0, 0, 0.73);
   box-shadow: 0px 4px 35px rgba(0, 0, 0, 0.47);
   backdrop-filter: blur(29px);
-}
-
-.border-card-purple-tf {
-  border: 4px solid #731dd8;
-}
-
-.border-method-purple-tf {
-  border: 2px solid #731dd8;
-}
-
-
-.description-editor {
-  min-height: 200px;
-  /* Defina a altura mínima desejada */
 }

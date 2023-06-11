@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
         {/* Primeira linha */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
           <div className="w-full  px-4 min-w-0">
-            <h3 className="font-bold text-purple-700 text-lg mb-2">
+            <h3 className="font-bold text-blue-tf-700 text-lg mb-2">
               ENCONTRE EVENTOS
             </h3>
             <p className="text-white mb-1 text-lg">Hoje</p>
@@ -18,7 +18,9 @@ const Footer: React.FC = () => {
             <p className="text-white mb-1 text-lg">Este mês</p>
           </div>
           <div className="w-full  px-4 min-w-0">
-            <h3 className="font-bold text-purple-700  text-lg mb-2">CIDADES</h3>
+            <h3 className="font-bold text-blue-tf-700  text-lg mb-2">
+              CIDADES
+            </h3>
             <p className="text-white mb-1 text-lg">São Paulo</p>
             <p className="text-white mb-1 text-lg">Belo Horizonte</p>
             <p className="text-white mb-1 text-lg">Rio de Janeiro</p>
@@ -33,7 +35,7 @@ const Footer: React.FC = () => {
             <p className="text-white mb-1 text-lg">Goiânia</p>
           </div>
           <div className="w-full  px-4 min-w-0">
-            <h3 className="font-bold text-purple-700  text-lg mb-2">
+            <h3 className="font-bold text-blue-tf-700  text-lg mb-2">
               CATEGORIAS
             </h3>
             <p className="text-white mb-1 text-lg font-bold">Festas e shows</p>
@@ -66,7 +68,7 @@ const Footer: React.FC = () => {
             <p className="text-white mb-1 text-lg font-bold">Moda e Beleza</p>
           </div>
           <div className="w-full  px-4 min-w-0">
-            <h3 className="font-bold text-purple-700  text-lg mb-2">
+            <h3 className="font-bold text-blue-tf-700  text-lg mb-2">
               PARA PRODUTORES
             </h3>
             <p className="text-white mb-1 text-lg font-medium">Soluções</p>
@@ -86,7 +88,7 @@ const Footer: React.FC = () => {
             <p className="text-white mb-1 text-lg font-medium">API</p>
           </div>
           <div className="w-full  px-4 min-w-0">
-            <h3 className="font-bold text-purple-700  text-lg mb-2">AJUDA</h3>
+            <h3 className="font-bold text-blue-tf-700  text-lg mb-2">AJUDA</h3>
             <p className="text-white mb-1 text-lg font-bold">
               Central de Ajuda
             </p>

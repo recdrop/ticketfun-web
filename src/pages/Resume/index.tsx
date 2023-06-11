@@ -4,7 +4,11 @@ import Profile from "@/src/components/Profile";
 import TabelaDeEventos from "@/src/components/TabelaDeEventos";
 import TabelaDeEvento from "@/src/components/TabelaDeEventos";
 import withAuth from "@/src/components/withAuth/indext";
-import { faCalendarAlt, faPlus, faTicketAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCalendarAlt,
+  faPlus,
+  faTicketAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -14,24 +18,23 @@ function Resume() {
   const router = useRouter();
   const { id } = router.query;
 
-
   return (
     <div className="flex flex-1 flex-col">
       <Header></Header>
 
       <div className="container mx-auto flex mt-5">
-        
         <MenuLateral></MenuLateral>
-        
+
         <div className="w-full  ml-5">
-        
-        <main className="p-4 flex-1">
-          <div className="flex  justify-between mb-4 pb-2 border-b-2">
-            <div className="flex flex-1">
-              <h1>Meus Eventos</h1>
-            </div>
-            <div className="flex flex-1 justify-center sm:justify-end items-center">
-              <Link href="/NewEvent" className="
+          <main className="p-4 flex-1">
+            <div className="flex  justify-between mb-4 pb-2 border-b-2">
+              <div className="flex flex-1">
+                <h1>Meus Eventos</h1>
+              </div>
+              <div className="flex flex-1 justify-center sm:justify-end items-center">
+                <Link
+                  href="/NewEvent"
+                  className="
                 sm:flex
                 hidden
                 h-10 
@@ -49,7 +52,9 @@ function Resume() {
                 >
                   Novo Evento
                 </Link>
-              <Link href="/NewEvent" className="
+                <Link
+                  href="/NewEvent"
+                  className="
                 mr-5
                 sm:mr-0
                 flex
@@ -67,22 +72,17 @@ function Resume() {
     
                 "
                 >
-                  <FontAwesomeIcon icon={faPlus} size='2x' />
+                  <FontAwesomeIcon icon={faPlus} size="2x" />
                 </Link>
+              </div>
             </div>
-          </div>
-        
-          <TabelaDeEventos></TabelaDeEventos>
-        </main>
+
+            <TabelaDeEventos></TabelaDeEventos>
+          </main>
+        </div>
       </div>
-
-
-      </div>
-
-
     </div>
   );
-};
-
+}
 
 export default withAuth(Resume);

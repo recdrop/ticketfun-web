@@ -38,7 +38,7 @@ const Profile = (): JSX.Element => {
       <p>Nome: {user.displayName}</p>
       <p>E-mail: {user.email}</p>
       <button
-        className="bg-purple-700 rounded-md text-white text-lg py-3 px-6 hover:bg-purple-800 transition-colors duration-300 inline-block"
+        className="bg-blue-tf-700 rounded-md text-white text-lg py-3 px-6 hover:bg-blue-tf-800 transition-colors duration-300 inline-block"
         onClick={handleLogout}
       >
         Logout

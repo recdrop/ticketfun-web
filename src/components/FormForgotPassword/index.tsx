@@ -94,8 +94,8 @@ const FormForgotPassword = () => {
                   placeholder-gray-500 
                   text-gray-900 
                   focus:outline-none 
-                  focus:ring-purple-500 
-                  focus:border-purple-500
+                  focus:ring-blue-tf-500 
+                  focus:border-blue-tf-500
                   focus:z-10 "
                 placeholder="Endereço de e-mail"
                 value={email}
@@ -124,12 +124,12 @@ const FormForgotPassword = () => {
               font-medium 
               rounded-md 
               text-white 
-              bg-purple-700 
-              hover:bg-purple-800 
+              bg-blue-tf-700 
+              hover:bg-blue-tf-800 
               focus:outline-none 
               focus:ring-2 
               focus:ring-offset-2 
-              focus:ring-purple-700"
+              focus:ring-blue-tf-700"
             >
               Enviar
             </button>
@@ -148,17 +148,17 @@ const FormForgotPassword = () => {
               items-center
        
               border 
-              border-purple-700
+              border-blue-tf-700
               text-lg
               font-medium 
               rounded-md 
-              text-purple-700
+              text-blue-tf-700
               bg-white
-              hover:bg-purple-700 hover:text-white 
+              hover:bg-blue-tf-700 hover:text-white 
               focus:outline-none 
               focus:ring-2 
               focus:ring-offset-2 
-              focus:ring-purple-700"'
+              focus:ring-blue-tf-700"'
               >
                 Voltar
               </Link>

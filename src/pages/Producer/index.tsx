@@ -38,9 +38,11 @@ const Producer: React.FC = () => {
 
       <main className="container mx-auto px-4 pt-8 pb-48">
         <div className="flex flex-1 justify-center mb-10">
-         
           <div className="flex">
-            <label className="text-2xl font-medium text-gray-600 "> Ordernar:</label>
+            <label className="text-2xl font-medium text-gray-600 ">
+              {" "}
+              Ordernar:
+            </label>
             <select className=" ">
               <option>Data</option>
               <option>Nome</option>
@@ -53,11 +55,10 @@ const Producer: React.FC = () => {
               <option>Nome</option>
             </select>
           </div>
-
         </div>
 
         <div className="flex flex-1">
-          <div 
+          <div
             className="
               flex
               w-[1278px]
@@ -67,13 +68,11 @@ const Producer: React.FC = () => {
               border-solid 
               border-gray-100 
               shadow-md 
-              rounded-lg">
-                Seu conteúdo aqui
-              </div>
-
-
+              rounded-lg"
+          >
+            Seu conteúdo aqui
+          </div>
         </div>
-       
       </main>
       <Footer />
     </div>
