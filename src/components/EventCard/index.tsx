@@ -8,7 +8,7 @@ import { slugify } from "@/src/utils/slugify";
 interface EventCardProps {
   image: string;
   eventId: number;
-  eventAge?: number;
+  eventAge?: number | boolean;
   eventDate: string;
   eventName: string;
   eventDescription: string;
