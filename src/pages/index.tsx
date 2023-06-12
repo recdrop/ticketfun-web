@@ -7,10 +7,11 @@ import React from "react";
 import ButtonGroup from "../components/ButtonGroup";
 import Footer from "../components/Footer";
 import useEventCity from "../hooks/useEventCity";
-import CityDialog from "../components/Dialog/CityDialog";
+import EventCityDialog from "../components/Dialog/EventCityDialog";
 import { getEventTypes } from "../services/eventTypeService";
 import { EventType } from "../interfaces/eventType";
 import useEventType from "../hooks/useEventType";
+import EventTypeDialog from "../components/Dialog/EventTypeDialog";
 
 const HomePage: React.FC = () => {
   // Lista de eventos de exemplo
@@ -45,9 +46,9 @@ const HomePage: React.FC = () => {
   const { eventCity, updateEventCity } = useEventCity();
   const { eventType, updateEventType } = useEventType();
   const [currentCity, setCurrentCity] = React.useState("");
-  const [currentType, setCurrentType] = React.useState(1);
+  const [currentType, setCurrentType] = React.useState(eventType || 1);
   const [isDialogCityOpen, setIsDialogCityOpen] = React.useState(false);
-  const [activeEventType, setActiveEventType] = React.useState(1);
+  const [isDialogTypeOpen, setIsDialogTypeOpen] = React.useState(false);
   const [arrEventTypes, setArrEventTypes] = React.useState<Array<EventType>>(
     []
   );
@@ -58,6 +59,7 @@ const HomePage: React.FC = () => {
   };
 
   const updateType = (id: number) => {
+    console.log(id);
     const updatedEventTypes = arrEventTypes.map((evt) => {
       if (evt.id === id) {
         return { ...evt, active: true };
@@ -69,7 +71,7 @@ const HomePage: React.FC = () => {
     setArrEventTypes(updatedEventTypes);
 
     updateEventType(id);
-    setActiveEventType(id);
+    setCurrentType(id);
   };
 
   const getButtonById = (id: number) => {
@@ -92,7 +94,7 @@ const HomePage: React.FC = () => {
     const fetchEventType = async () => {
       const eventTypes = await getEventTypes();
       const updatedEventTypes = eventTypes.map((evt) => {
-        if (evt.id === activeEventType) {
+        if (evt.id === currentType) {
           return { ...evt, active: true };
         } else {
           return { ...evt, active: false };
@@ -100,7 +102,7 @@ const HomePage: React.FC = () => {
       });
 
       setArrEventTypes(updatedEventTypes);
-      updateEventType(activeEventType);
+      updateEventType(currentType);
     };
 
     fetchEventType();
@@ -112,10 +114,10 @@ const HomePage: React.FC = () => {
       <Banner />
       <ButtonGroup />
       <main className="container mx-auto px-2 pt-8 pb-48">
-        <CityDialog
+        <EventCityDialog
           open={isDialogCityOpen}
           onClose={() => setIsDialogCityOpen(false)}
-          updateCity={updateCity}
+          update={updateCity}
         />
 
         <h2 className="text-4xl sm:text-5xl font-normal my-8 text-center">
@@ -145,9 +147,19 @@ const HomePage: React.FC = () => {
             />
           ))}
         </div>
+
+        <EventTypeDialog
+          open={isDialogTypeOpen}
+          onClose={() => setIsDialogTypeOpen(false)}
+          update={updateType}
+        />
+
         <h2 className="text-4xl sm:text-5xl font-normal my-8 text-center">
           Popular em{" "}
-          <b className="text-blue-tf-700 cursor-pointer items-center align-middle">
+          <b
+            className="text-blue-tf-700 cursor-pointer items-center align-middle"
+            onClick={() => setIsDialogTypeOpen(true)}
+          >
             {getButtonById(currentType) !== undefined &&
               getButtonById(currentType)?.label}
             <FontAwesomeIcon

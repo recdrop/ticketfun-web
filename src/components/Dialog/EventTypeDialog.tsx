@@ -3,13 +3,29 @@ import { Dialog } from "@headlessui/react";
 import classNames from "@/src/utils/classNames";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { DialogProps } from "./";
+import { getEventTypes } from "@/src/services/eventTypeService";
+import React from "react";
+import { EventType } from "@/src/interfaces/eventType";
 
-export default function CityDialog({
+export default function EventTypeDialog({
   open,
   onClose,
-  updateCity,
+  update: updateType,
   className,
 }: DialogProps) {
+  const [arrEventTypes, setArrEventTypes] = React.useState<Array<EventType>>(
+    []
+  );
+
+  React.useEffect(() => {
+    const fetchEventType = async () => {
+      const eventTypes = await getEventTypes();
+      setArrEventTypes(eventTypes);
+    };
+
+    fetchEventType();
+  }, []);
+
   return (
     <Dialog
       open={open}
@@ -25,7 +41,7 @@ export default function CityDialog({
         <Dialog.Panel className="bg-white rounded-lg shadow-lg p-6">
           <Dialog.Title className="mb-4 flex justify-between">
             <a className="text-2xl font-bold text-gray-800">
-              Selecionar cidade
+              Selecionar tipo de evento
             </a>
 
             <button
@@ -42,15 +58,19 @@ export default function CityDialog({
           <div className="py-4 block w-full">
             <select
               className="border-0 cursor-pointer rounded drop-shadow-md bg-blue-200 w-72 duration-300 hover:bg-blue-400 focus:bg-gray-300 p-4"
-              onChange={(e) => (updateCity ? updateCity(e.target.value) : null)}
-              defaultValue="Selecionar Cidade"
+              onChange={(e) =>
+                updateType ? updateType(Number(e.target.value)) : null
+              }
             >
-              <option disabled>Selecionar Cidade</option>
-              <option value="São Paulo">São Paulo</option>
-              <option value="Rio de Janeiro">Rio de Janeiro</option>
-              <option value="Belo Horizonte">Belo Horizonte</option>
-              <option value="Curitiba">Curitiba</option>
-              <option value="Salvador">Salvador</option>
+              {arrEventTypes.map((evt) => (
+                <option
+                  key={evt.id}
+                  value={evt.id}
+                  className="bg-blue-200 hover:bg-blue-400 focus:bg-gray-300"
+                >
+                  {evt.label}
+                </option>
+              ))}
             </select>
           </div>
 

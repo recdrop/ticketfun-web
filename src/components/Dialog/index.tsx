@@ -3,5 +3,5 @@ export type DialogProps = {
   onClose: () => void;
   children?: React.ReactNode;
   className?: string;
-  updateCity?: (city: string) => void;
+  update?: (param: string | any) => void;
 };
