@@ -62,6 +62,9 @@ export default function EventTypeDialog({
                 updateType ? updateType(Number(e.target.value)) : null
               }
             >
+              <option selected disabled>
+                Selecionar Tipo
+              </option>
               {arrEventTypes.map((evt) => (
                 <option
                   key={evt.id}

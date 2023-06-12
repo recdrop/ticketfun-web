@@ -86,6 +86,12 @@ const ButtonGroup: React.FC = () => {
   };
 
   React.useEffect(() => {
+    if (eventType) {
+      toggleActive(eventType);
+    }
+  }, [eventType]);
+
+  React.useEffect(() => {
     const fetchEventType = async () => {
       const eventTypes = await getEventTypes();
       const updatedEventTypes = eventTypes.map((button) => {
