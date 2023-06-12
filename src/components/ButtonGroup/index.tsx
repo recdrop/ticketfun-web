@@ -55,7 +55,7 @@ const ButtonGroup: React.FC = () => {
   const { eventType, updateEventType } = useEventType();
 
   const refButtonMobile = React.useRef<HTMLButtonElement>(null);
-  const [active, setActive] = React.useState(1);
+  const [active, setActive] = React.useState(eventType || 1);
   const [buttons, setButtons] = React.useState<Array<EventType>>([]);
 
   const toggleActive = (id: number) => {

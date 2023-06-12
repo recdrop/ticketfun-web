@@ -8,7 +8,7 @@ import useEventCity from "@/src/hooks/useEventCity";
 import classNames from "@/src/utils/classNames";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import "swiper/swiper-bundle.min.css";
-import CityDialog from "../Dialog/CityDialog";
+import CityDialog from "../Dialog/EventCityDialog";
 
 // Ative os plugins do Swiper que você deseja usar
 SwiperCore.use([Navigation, Pagination, Autoplay]);
@@ -138,7 +138,7 @@ const Banner: React.FC = () => {
       <CityDialog
         open={isOpen}
         onClose={() => setIsOpen(false)}
-        updateCity={updateCity}
+        update={updateCity}
       />
     </>
   );
