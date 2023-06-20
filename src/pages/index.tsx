@@ -12,6 +12,7 @@ import { getEventTypes } from "../services/eventTypeService";
 import { EventType } from "../interfaces/eventType";
 import useEventType from "../hooks/useEventType";
 import EventTypeDialog from "../components/Dialog/EventTypeDialog";
+import { Loader } from "../components/Loader";
 
 const HomePage: React.FC = () => {
   // Lista de eventos de exemplo
