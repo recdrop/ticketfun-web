@@ -52,6 +52,7 @@ module.exports = {
       },
       fontFamily: {
         helvetica: ["Helvetica Neue", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
     },
     container: {
