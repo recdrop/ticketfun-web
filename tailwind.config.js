@@ -49,6 +49,9 @@ module.exports = {
           700: "#2970FF",
           900: "#1f5acc",
         },
+        "yellow-tf": {
+          700: "#D8A41D",
+        },
       },
       fontFamily: {
         helvetica: ["Helvetica Neue", "sans-serif"],

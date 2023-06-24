@@ -1,8 +1,9 @@
 import EventListItemProducer from "@/src/components/EventListItemProducer";
 import Footer from "@/src/components/Footer";
 import Header from "@/src/components/Header";
-import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import { faFilter, faLink, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import React from "react";
 
 const Producer: React.FC = () => {
@@ -135,8 +136,8 @@ const Producer: React.FC = () => {
               <div className="mb-2 p-7 rounded-lg border  border-opacity-10">
                 <div
                   className="
-                  sm:text-3xl
-                  text-4xl 
+                  text-3xl
+                  sm:text-4xl 
                   font-inter 
                   font-medium
                   text-gray-tf-500
@@ -187,7 +188,7 @@ const Producer: React.FC = () => {
               {/* Receita Liquida*/}
               <div
                 className="
-
+                  mb-2
                   p-7 
                   rounded-lg 
                   border  
@@ -214,6 +215,102 @@ const Producer: React.FC = () => {
                 >
                   Receita líquida Já abatido taxas e impostos
                 </div>
+              </div>
+              {/* link evento */}
+              <div className="mb-2 flex flex-1 rounded-lg border  border-opacity-10">
+                <div className="border-r  p-7">
+                  <FontAwesomeIcon
+                    icon={faLink}
+                    className="text-blue-tf-400 text-lg cursor-pointer"
+                  />
+                </div>
+                <div className="flex flex-1 justify-center items-center">
+                  <Link href="#" className="underline text-blue-tf-700">
+                    Blackkartel Festival
+                  </Link>
+                </div>
+              </div>
+              {/* botoes */}
+              <div className="mb-2 flex flex-1 flex-col">
+                <button
+                  className="
+                  mt-4
+                  flex 
+                  bg-blue-tf-700 
+                  h-[67px]
+                  rounded-xl
+                  border 
+                  border-solid 
+                  border-gray-300
+                  justify-center
+                  items-center
+                  font-inter
+                  text-xl
+                  text-white
+                  font-medium
+                  flex-wrap
+                  "
+                >
+                  Gerar ingresso cortesia
+                </button>
+              </div>
+              {/* Pausar vendas */}
+              <div className="mb-2 flex flex-1 flex-col">
+                <button
+                  className="
+                  mt-4
+                  flex 
+                  bg-yellow-tf-700 
+                  h-[67px]
+                  rounded-xl
+                  border 
+                  border-solid 
+                  border-gray-300
+                  justify-center
+                  items-center
+                  font-inter
+                  text-xl
+                  text-white
+                  font-medium
+                  flex-wrap
+                  "
+                >
+                  Pausar venda de ingressos
+                </button>
+              </div>
+              {/*Excluir */}
+              <div className="mb-2 flex flex-1 flex-col">
+                <button
+                  className="
+                  mt-4
+                  flex 
+                  bg-red-tf-900
+                  h-[67px]
+                  rounded-xl
+                  border 
+                  border-solid 
+                  border-gray-300
+                  justify-center
+                  items-center
+                  font-inter
+                  text-xl
+                  text-white
+                  font-medium
+                  flex-wrap
+                  "
+                >
+                  <FontAwesomeIcon
+                    icon={faTrash}
+                    className="
+                                text-white 
+                                tf-400 
+                                text-[24px] 
+                                cursor-pointer
+                                mr-2
+                                "
+                  />
+                  Apagar evento
+                </button>
               </div>
             </div>
           </div>
