@@ -1,10 +1,58 @@
+/* eslint-disable prettier/prettier */
+
 import Banner from "@/src/components/Banner";
 import EventCard from "@/src/components/EventCard";
 import Header from "@/src/components/Header";
 import ButtonGroup from "@/src/components/ButtonGroup";
 import Footer from "@/src/components/Footer";
+import { useState } from "react";
+import Image from "next/image";
 
 function Event() {
+  const [pickenTickets, setPickenTickets] = useState([0, 0, 0, 0]);
+  const [total, setTotal] = useState(0);
+  const Tickets = [
+    {
+      name: "Área VIP - Meia entrada",
+      price: 119.99,
+    },
+    {
+      name: "Área VIP - Inteira",
+      price: 119.99,
+    },
+    {
+      name: "Pista - Meia entrada",
+      price: 119.99,
+    },
+    {
+      name: "Pista - Inteira",
+      price: 119.99,
+    },
+  ];
+
+  const handleAdd = (
+    index: number,
+    type: "plus" | "minus" | "reset" = "plus"
+  ) => {
+    const newPickenTickets = [...pickenTickets];
+
+    if (type === "plus") {
+      newPickenTickets[index] += 1;
+    } else if (type === "minus") {
+      newPickenTickets[index] -= 1;
+    } else {
+      newPickenTickets[index] = 0;
+    }
+
+    setPickenTickets(newPickenTickets);
+
+    setTotal(
+      newPickenTickets.reduce((acc, cur, index) => {
+        return acc + cur * Tickets[index].price;
+      }, 0)
+    );
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
       <Header />
@@ -77,99 +125,60 @@ function Event() {
 
                 <div className="flex justify-between">
                   <img src="/assets/svg/basket.svg" alt="basket" />
-
                   <span className="ml-2 not-italic font-medium text-xl leading-6 text-right text-white">
-                    R$480,00
+                    R${total.toFixed(2).toString().replace(".", ",")}
                   </span>
                 </div>
               </div>
 
               <div className="p-6">
-                <div className="background-card rounded-2xl p-6 flex justify-between align-center">
-                  <div className="block">
-                    <span className="block not-italic font-medium text-md lg:text-xl leading-6 text-white mb-1">
-                      Área VIP - Meia entrada
-                    </span>
-                    <span className="block not-italic font-light text-md lg:text-xl leading-6 text-white">
-                      R$120,00 (+R$12,00 taxa)
-                    </span>
-                  </div>
-
-                  <div className="flex">
-                    <img
-                      src="/assets/svg/plus.svg"
-                      className="cursor-pointer"
-                      alt="plus"
-                    />
-                  </div>
-                </div>
-
-                <div className="background-card mt-4 rounded-2xl p-6 flex justify-between align-center border-[7px] border-blue-tf-900">
-                  <div className="block">
-                    <span className="block not-italic font-medium text-md lg:text-xl leading-6 text-white mb-1">
-                      Área VIP - Inteira
-                    </span>
-                    <span className="block not-italic font-light text-md lg:text-xl leading-6 text-white">
-                      R$120,00 (+R$12,00 taxa)
-                    </span>
-                  </div>
-
-                  <div className="flex align-center text-center justify-center">
-                    <img
-                      src="/assets/svg/minus.svg"
-                      className="cursor-pointer"
-                      alt="minus"
-                    />
-
-                    <div className="ml-4 mr-4 font-medium text-xl lg:text-3xl leading-2 text-white flex items-center">
-                      2
+                {Tickets.map((ticket, index) => (
+                  <div
+                    key={index}
+                    className="background-card mt-4 rounded-2xl p-6 flex justify-between align-center"
+                  >
+                    <div className="block">
+                      <span className="block not-italic font-medium text-md lg:text-xl leading-6 text-white mb-1">
+                        {ticket.name}
+                      </span>
+                      <span className="block not-italic font-light text-md lg:text-xl leading-6 text-white">
+                        R${ticket.price.toString().replace(".", ",")} (+ R$
+                        {(ticket.price * 0.1)
+                          .toFixed(2)
+                          .toString()
+                          .replace(".", ",")}{" "}
+                        de taxa)
+                      </span>
                     </div>
 
-                    <img
-                      src="/assets/svg/plus.svg"
-                      className="cursor-pointer"
-                      alt="plus"
-                    />
-                  </div>
-                </div>
+                    <div className="flex align-center text-center justify-center">
+                      <Image
+                        src="/assets/svg/minus.svg"
+                        className={
+                          pickenTickets[index] === 0
+                            ? "hidden"
+                            : "cursor-pointer select-none"
+                        }
+                        alt="minus"
+                        onClick={() => handleAdd(index, "minus")}
+                        width={24}
+                        height={24}
+                      />
 
-                <div className="background-card mt-4 rounded-2xl p-6 flex justify-between align-center">
-                  <div className="block">
-                    <span className="block not-italic font-medium text-md lg:text-xl leading-6 text-white mb-1">
-                      Pista - Meia entrada
-                    </span>
-                    <span className="block not-italic font-light text-md lg:text-xl leading-6 text-white">
-                      R$120,00 (+R$12,00 taxa)
-                    </span>
+                      <div className="ml-4 mr-4 font-medium text-xl lg:text-3xl leading-2 text-white flex items-center select-none">
+                        {pickenTickets[index]}
+                      </div>
+                      <Image
+                        src="/assets/svg/plus.svg"
+                        className="cursor-pointer select-none"
+                        alt="plus"
+                        onClick={() => handleAdd(index, "plus")}
+                        width={24}
+                        height={24}
+                      />
+                    </div>
                   </div>
-
-                  <div className="flex">
-                    <img
-                      src="/assets/svg/plus.svg"
-                      className="cursor-pointer"
-                      alt="plus"
-                    />
-                  </div>
-                </div>
-
-                <div className="background-card mt-4 rounded-2xl p-6 flex justify-between align-center">
-                  <div className="block">
-                    <span className="block not-italic font-medium text-md lg:text-xl leading-6 text-white mb-1">
-                      Pista - Inteira
-                    </span>
-                    <span className="block not-italic font-light text-md lg:text-xl leading-6 text-white">
-                      R$120,00 (+R$12,00 taxa)
-                    </span>
-                  </div>
-
-                  <div className="flex">
-                    <img
-                      src="/assets/svg/plus.svg"
-                      className="cursor-pointer"
-                      alt="plus"
-                    />
-                  </div>
-                </div>
+                ))}
 
                 <div className="background-card mt-4 rounded-2xl p-6 flex justify-between align-center">
                   <div className="w-full lg:w-auto flex">
@@ -195,7 +204,7 @@ function Event() {
 
             <div className="text-center m-4">
               <span className="not-italic font-normal text-lg leading-5 text-center text-gray-600">
-                I accept the
+                I accept the{" "}
                 <a href="#" className="underline">
                   terms and conditions
                 </a>{" "}
