@@ -1,9 +1,6 @@
 /* eslint-disable prettier/prettier */
 
-import Banner from "@/src/components/Banner";
-import EventCard from "@/src/components/EventCard";
 import Header from "@/src/components/Header";
-import ButtonGroup from "@/src/components/ButtonGroup";
 import Footer from "@/src/components/Footer";
 import { useState } from "react";
 import Image from "next/image";
@@ -30,18 +27,13 @@ function Event() {
     },
   ];
 
-  const handleAdd = (
-    index: number,
-    type: "plus" | "minus" | "reset" = "plus"
-  ) => {
+  const handleAdd = (index: number, type: "plus" | "minus" = "plus") => {
     const newPickenTickets = [...pickenTickets];
 
     if (type === "plus") {
       newPickenTickets[index] += 1;
     } else if (type === "minus") {
       newPickenTickets[index] -= 1;
-    } else {
-      newPickenTickets[index] = 0;
     }
 
     setPickenTickets(newPickenTickets);
@@ -57,12 +49,14 @@ function Event() {
     <div className="min-h-screen bg-gray-100">
       <Header />
 
-      <div className="w-full h-full">
-        <img
-          src={"/assets/imgs/Banner.png"}
-          className="w-full h-full object-cover"
-        />
-      </div>
+      <Image
+        src={"/assets/imgs/Banner.png"}
+        className="w-full h-full object-cover"
+        alt="banner"
+        width={1920}
+        height={1080}
+        style={{ width: "100%", height: "auto" }}
+      />
 
       <main className="container mx-auto px-4 pt-8 pb-48">
         <div className="grid grid-cols-5 gap-4">
